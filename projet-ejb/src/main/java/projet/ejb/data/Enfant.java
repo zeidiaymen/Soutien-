@@ -11,8 +11,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "enfant")
 public class Enfant implements Serializable {
 
 	@Id
@@ -30,13 +32,17 @@ public class Enfant implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "idcompte")
 	private Compte compte;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idcours")
 	private Cours cours;
 
+	public Enfant() {
+		super();
+	}
+
 	public Enfant(int id, String nom, String prenom, Date dateDeNaissance, String niveauEtude, String creneau,
-			MethodePayement methodePayement, Compte compte) {
+			MethodePayement methodePayement) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -45,7 +51,7 @@ public class Enfant implements Serializable {
 		this.niveauEtude = niveauEtude;
 		this.creneau = creneau;
 		this.methodePayement = methodePayement;
-		this.compte = compte;
+		// this.compte = compte;
 	}
 
 	public int getId() {
@@ -104,16 +110,12 @@ public class Enfant implements Serializable {
 		this.methodePayement = methodePayement;
 	}
 
-	public Compte getCompte() {
-		return compte;
-	}
+//	public Compte getCompte() {
+	// return compte;
+	// }
 
-	public void setCompte(Compte compte) {
-		this.compte = compte;
-	}
-
-	public Enfant() {
-		super();
-	}
+	// public void setCompte(Compte compte) {
+	// this.compte = compte;
+	// }
 
 }

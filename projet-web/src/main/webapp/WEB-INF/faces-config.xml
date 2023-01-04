@@ -16,6 +16,10 @@
    <from-outcome>info</from-outcome>
    <to-view-id>/pages/info.xhtml</to-view-id>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>liste</from-outcome>
+   <to-view-id>/pages/Parent/Enfant/liste.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <application/>
 </faces-config>

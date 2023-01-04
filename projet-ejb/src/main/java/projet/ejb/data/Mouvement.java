@@ -19,8 +19,42 @@ public class Mouvement implements Serializable {
 	@Column(name = "idmvt")
 	private int id;
 	private double montant;
-	private Date date = new Date();
 	@ManyToOne
-	@JoinColumn(name="idcompte")
+	@JoinColumn(name = "idcompte")
 	private Compte cpt;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public double getMontant() {
+		return montant;
+	}
+
+	public void setMontant(double montant) {
+		this.montant = montant;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public Compte getCpt() {
+		return cpt;
+	}
+
+	public void setCpt(Compte cpt) {
+		this.cpt = cpt;
+	}
+
+	private Date date = new Date();
+
 }

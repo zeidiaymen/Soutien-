@@ -43,12 +43,12 @@ public class Compte {
 	private List<String> roles = new ArrayList<>();
 
 	@Column(name = "solde")
-	private double solde;
+	private double solde = 0;
 
 	@Column(name = "enfants")
 	@OneToMany(mappedBy = "compte", cascade = CascadeType.ALL)
 	private List<Enfant> enfants;
-	@Column(name = "enfants")
+	@Column(name = "mouvements")
 	@OneToMany(mappedBy = "cpt", cascade = CascadeType.ALL)
 	private List<Mouvement> mvts;
 	// Constructeurs

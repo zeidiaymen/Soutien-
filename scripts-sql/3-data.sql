@@ -10,10 +10,10 @@ DELETE FROM compte;
 
 -- Compte
 
-INSERT INTO compte (idcompte, pseudo, motdepasse, email ) VALUES 
-( 1, 'geek', 'geek', 'geek@jfox.fr' ),
-( 2, 'chef', 'chef', 'chef@jfox.fr' ),
-( 3, 'job', 'job', 'job@jfox.fr' );
+INSERT INTO compte (idcompte, pseudo, motdepasse, email,solde ) VALUES 
+( 1, 'geek', 'geek', 'geek@jfox.fr',5 ),
+( 2, 'chef', 'chef', 'chef@jfox.fr',50 ),
+( 3, 'job', 'job', 'job@jfox.fr',3 );
 
 ALTER TABLE compte ALTER COLUMN idcompte RESTART WITH 4;
 

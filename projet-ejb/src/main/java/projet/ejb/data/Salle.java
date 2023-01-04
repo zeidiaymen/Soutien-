@@ -18,25 +18,31 @@ public class Salle implements Serializable {
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "idsalle")
 	private int id;
-	private int nombreSalle = 46;
+	private int nombreSalle;
 	@Column(name = "cours")
 	@OneToMany(mappedBy = "salle", cascade = CascadeType.ALL)
 	private List<Cours> cours;
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public int getNombreSalle() {
 		return nombreSalle;
 	}
+
 	public void setNombreSalle(int nombreSalle) {
 		this.nombreSalle = nombreSalle;
 	}
+
 	public List<Cours> getCours() {
 		return cours;
 	}
+
 	public void setCours(List<Cours> cours) {
 		this.cours = cours;
 	}
