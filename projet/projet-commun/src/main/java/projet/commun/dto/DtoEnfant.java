@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @SuppressWarnings("serial")
-public class DtoEnfant implements Serializable  {
+public class DtoEnfant implements Serializable {
 
 	private int id;
 
@@ -16,11 +16,25 @@ public class DtoEnfant implements Serializable  {
 	private MethodePayement methodePayement;
 
 	private DtoCompte compte;
-	
-
 	private DtoCours cours;
-
 	
+	public DtoEnfant() {
+		super();
+	}
+
+	public DtoEnfant(int id, String nom, String prenom, Date dateDeNaissance, String niveauEtude, String creneau,
+			MethodePayement methodePayement, DtoCompte compte, DtoCours cours) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateDeNaissance = dateDeNaissance;
+		this.niveauEtude = niveauEtude;
+		this.creneau = creneau;
+		this.methodePayement = methodePayement;
+		this.compte = compte;
+		this.cours = cours;
+	}
 
 	public int getId() {
 		return id;
@@ -33,14 +47,6 @@ public class DtoEnfant implements Serializable  {
 	public String getNom() {
 		return nom;
 	}
-
-	//public DtoCours getCours() {
-		//return cours;
-	//}
-
-	//public void setCours(DtoCours cours) {
-		//this.cours = cours;
-	//}
 
 	public void setNom(String nom) {
 		this.nom = nom;
@@ -86,30 +92,24 @@ public class DtoEnfant implements Serializable  {
 		this.methodePayement = methodePayement;
 	}
 
-//	public DtoCompte getCompte() {
-	//	return compte;
-	//}
-
-//	public void setCompte(DtoCompte compte) {
-	//	this.compte = compte;
-	//}
-
-	public DtoEnfant() {
-		super();
+	public DtoCompte getCompte() {
+		return compte;
 	}
 
-	public DtoEnfant(int id, String nom, String prenom, Date dateDeNaissance, String niveauEtude, String creneau,
-			MethodePayement methodePayement) {
-		super();
-		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.dateDeNaissance = dateDeNaissance;
-		this.niveauEtude = niveauEtude;
-		this.creneau = creneau;
-		this.methodePayement = methodePayement;
+	public void setCompte(DtoCompte compte) {
+		this.compte = compte;
+	}
+
+	public DtoCours getCours() {
+		return cours;
+	}
+
+	public void setCours(DtoCours cours) {
+		this.cours = cours;
 	}
 	
-
 	
+	
+	
+
 }

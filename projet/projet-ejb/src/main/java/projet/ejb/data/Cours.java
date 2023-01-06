@@ -20,11 +20,11 @@ public class Cours implements Serializable {
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "idCours")
 	private int id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idSalle")
 	private Salle salle;
-	
+
 	@OneToMany(mappedBy = "cours", cascade = CascadeType.ALL)
 	private List<Enfant> enfants;
 
