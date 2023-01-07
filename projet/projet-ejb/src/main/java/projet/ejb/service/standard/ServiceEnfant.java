@@ -40,7 +40,7 @@ public class ServiceEnfant implements IServiceEnfant {
 	public void modifier(DtoEnfant dtoCompte) throws ExceptionValidation {
 
 		daoCompte.modifier(mapper.mapEnfant(dtoCompte));
-	
+
 	}
 
 	@Override

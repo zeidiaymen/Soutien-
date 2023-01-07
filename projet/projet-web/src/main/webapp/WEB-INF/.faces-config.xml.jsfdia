@@ -11,9 +11,20 @@
    <PROCESS-ITEM-OUTPUT ID="info::#pages#info.xhtml" NAME="output4"
     PATH="/pages/info.xhtml" TARGET="rules:#pages#info.xhtml"
     TITLE="info" model-entity="JSFProcessItemOutput"/>
-   <PROCESS-ITEM-OUTPUT ID="liste::#pages#Parent#Enfant#liste.xhtml"
+   <PROCESS-ITEM-OUTPUT ID="enfants::#pages#Parent#Enfant#liste.xhtml"
     NAME="output1" PATH="/pages/Parent/Enfant/liste.xhtml"
-    TARGET="rules:#pages#Parent#Enfant#liste.xhtml" TITLE="liste" model-entity="JSFProcessItemOutput"/>
+    TARGET="rules:#pages#Parent#Enfant#liste.xhtml" TITLE="enfants" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cours::#pages#AllUsers#Cours#liste.xhtml"
+    NAME="output3" PATH="/pages/AllUsers/Cours/liste.xhtml"
+    TARGET="rules:#pages#AllUsers#Cours#liste.xhtml" TITLE="cours" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="salles::#pages#AllUsers#Salle#liste.xhtml"
+    NAME="output5" PATH="/pages/AllUsers/Salle/liste.xhtml"
+    TARGET="rules:#pages#AllUsers#Salle#liste.xhtml" TITLE="salles" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="mouvements::#pages#Parent#Mouvement#liste.xhtml" NAME="output6"
+    PATH="/pages/Parent/Mouvement/liste.xhtml"
+    TARGET="rules:#pages#Parent#Mouvement#liste.xhtml"
+    TITLE="mouvements" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#connexion.xhtml" PATH="/connexion.xhtml"
@@ -24,4 +35,13 @@
   SHAPE="320,128,50,25" model-entity="JSFProcessGroup" persistent="true"/>
  <PROCESS-ITEM NAME="rules:#pages#Parent#Enfant#liste.xhtml"
   PATH="/pages/Parent/Enfant/liste.xhtml" SHAPE="356,176,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#AllUsers#Cours#liste.xhtml"
+  PATH="/pages/AllUsers/Cours/liste.xhtml" SHAPE="384,254,0,0"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#pages#AllUsers#Salle#liste.xhtml"
+  PATH="/pages/AllUsers/Salle/liste.xhtml" SHAPE="413,314,0,0"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#pages#Parent#Mouvement#liste.xhtml"
+  PATH="/pages/Parent/Mouvement/liste.xhtml" SHAPE="435,362,0,0"
+  model-entity="JSFProcessGroup" persistent="true"/>
 </PROCESS>

@@ -3,11 +3,9 @@ package projet.jsf.data;
 import java.io.Serializable;
 import java.util.Date;
 
-import projet.commun.dto.MethodePayement;
+public class Enfant implements Serializable {
 
-public class Enfant implements Serializable{
-
-	private int id;
+	private Integer id;
 
 	private String nom;
 	private String prenom;
@@ -16,14 +14,28 @@ public class Enfant implements Serializable{
 	private String creneau;
 	private MethodePayement methodePayement;
 
-	//private Compte compte;
-	
+	private Compte compte;
+	private Cours cours;
 
-	//private Cours cours;
+	public Enfant() {
+		super();
+	}
 
-	
+	public Enfant(int id, String nom, String prenom, Date dateDeNaissance, String niveauEtude, String creneau,
+			MethodePayement methodePayement, Compte compte, Cours cours) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateDeNaissance = dateDeNaissance;
+		this.niveauEtude = niveauEtude;
+		this.creneau = creneau;
+		this.methodePayement = methodePayement;
+		this.compte = compte;
+		this.cours = cours;
+	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -34,14 +46,6 @@ public class Enfant implements Serializable{
 	public String getNom() {
 		return nom;
 	}
-
-	//public Cours getCours() {
-		//return cours;
-	//}
-
-	//public void Cours(Cours cours) {
-		//this.cours = cours;
-	//}
 
 	public void setNom(String nom) {
 		this.nom = nom;
@@ -87,28 +91,20 @@ public class Enfant implements Serializable{
 		this.methodePayement = methodePayement;
 	}
 
-	//public Compte getCompte() {
-		//return compte;
-	//}
-
-	//public void setCompte(Compte compte) {
-		//this.compte = compte;
-	//}
-
-	public Enfant() {
-		super();
+	public Compte getCompte() {
+		return compte;
 	}
 
-	public Enfant(int id, String nom, String prenom, Date dateDeNaissance, String niveauEtude, String creneau,
-			MethodePayement methodePayement) {
-		super();
-		this.id = id;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.dateDeNaissance = dateDeNaissance;
-		this.niveauEtude = niveauEtude;
-		this.creneau = creneau;
-		this.methodePayement = methodePayement;
+	public void setCompte(Compte compte) {
+		this.compte = compte;
 	}
-	
+
+	public Cours getCours() {
+		return cours;
+	}
+
+	public void setCours(Cours cours) {
+		this.cours = cours;
+	}
+
 }

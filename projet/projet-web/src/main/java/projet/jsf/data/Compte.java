@@ -3,57 +3,47 @@ package projet.jsf.data;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @SuppressWarnings("serial")
-public class Compte implements Serializable  {
+public class Compte implements Serializable {
 
-	
 	// Champs
-	
-	Integer		id;
-	
-	@NotBlank( message = "Le pseudo doit être renseigné")
-	@Size(max=25, message = "Valeur trop longue pour le pseuo : 25 car. maxi" )
-	private String		pseudo;
 
-	@NotBlank( message = "Le mot de passe doit être renseigné")
-	@Size(max=25, message = "Valeur trop longue pour le mot de passe : 25 car. maxi" )
-	private String		motDePasse;
+	private Integer id;
 
-	@NotBlank( message = "L'adresse e-mail doit être renseigné")
-	@Size(max=100, message = "Valeur trop longue pour l'adresse e-mail : 100 car. maxi" )
-	@Email( message = "Adresse e-mail invalide" )
-	private String		email;
-	
-	private List<String> roles = new ArrayList<>();	
+	private String pseudo;
 
-	
-	// Constructeurs
-	
+	private String motDePasse;
+
+	private String email;
+
+	private List<String> roles = new ArrayList<>();
+
+	private double solde;
+
+	private List<Mouvement> mouvements;
+
 	public Compte() {
+		super();
 	}
-	
-	public Compte(Integer id, String pseudo, String motDePasse, String email) {
+
+	public Compte(int id, String pseudo, String motDePasse, String email, List<String> roles, double solde,
+			List<Mouvement> mouvements) {
 		super();
 		this.id = id;
 		this.pseudo = pseudo;
 		this.motDePasse = motDePasse;
 		this.email = email;
+		this.roles = roles;
+		this.solde = solde;
+		this.mouvements = mouvements;
 	}
-
-	
-	// Getters & setters
 
 	public Integer getId() {
 		return id;
 	}
-	
-	public void setId(Integer id) {
+
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -72,11 +62,11 @@ public class Compte implements Serializable  {
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
-	
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -89,29 +79,31 @@ public class Compte implements Serializable  {
 		this.roles = roles;
 	}
 
-	
-	public boolean isInRole( String role ) {
-		return roles.contains( role );
+	public double getSolde() {
+		return solde;
 	}
 
-	
-	// hashCode() & equals()
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
+	public void setSolde(double solde) {
+		this.solde = solde;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		var other = (Compte) obj;
-		return Objects.equals(id, other.id);
+	public List<Mouvement> getMouvements() {
+		return mouvements;
 	}
-	
+
+	public void setMouvements(List<Mouvement> mouvements) {
+		this.mouvements = mouvements;
+	}
+
+	public boolean isInRole(String role) {
+
+		if (role != null) {
+			for (String r : roles) {
+				if (r.equals(role)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }

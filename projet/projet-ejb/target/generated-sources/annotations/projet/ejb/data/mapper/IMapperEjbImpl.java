@@ -5,14 +5,21 @@ import java.util.List;
 import javax.annotation.processing.Generated;
 import javax.enterprise.context.ApplicationScoped;
 import projet.commun.dto.DtoCompte;
+import projet.commun.dto.DtoCours;
 import projet.commun.dto.DtoEnfant;
+import projet.commun.dto.DtoMouvement;
+import projet.commun.dto.DtoSalle;
 import projet.ejb.data.Compte;
+import projet.ejb.data.Cours;
+import projet.ejb.data.Crenaux;
 import projet.ejb.data.Enfant;
 import projet.ejb.data.MethodePayement;
+import projet.ejb.data.Mouvement;
+import projet.ejb.data.Salle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-01-04T09:30:19+0100",
+    date = "2023-01-07T13:12:26+0100",
     comments = "version: 1.5.3.Final, compiler: Eclipse JDT (IDE) 1.4.100.v20220318-0906, environment: Java 18.0.2 (Eclipse Adoptium)"
 )
 @ApplicationScoped
@@ -34,6 +41,7 @@ public class IMapperEjbImpl implements IMapperEjb {
         if ( list != null ) {
             compte.setRoles( new ArrayList<String>( list ) );
         }
+        compte.setSolde( source.getSolde() );
 
         return compte;
     }
@@ -54,6 +62,7 @@ public class IMapperEjbImpl implements IMapperEjb {
         if ( list != null ) {
             dtoCompte.setRoles( new ArrayList<String>( list ) );
         }
+        dtoCompte.setSolde( source.getSolde() );
 
         return dtoCompte;
     }
@@ -96,6 +105,100 @@ public class IMapperEjbImpl implements IMapperEjb {
         return dtoEnfant;
     }
 
+    @Override
+    public DtoCours mapCours(Cours source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        DtoCours dtoCours = new DtoCours();
+
+        dtoCours.setCapacite( source.getCapacite() );
+        dtoCours.setCrenaux( crenauxToCrenaux( source.getCrenaux() ) );
+        dtoCours.setId( source.getId() );
+        dtoCours.setLibelle( source.getLibelle() );
+        dtoCours.setPrix( source.getPrix() );
+        dtoCours.setSalle( mapSalle( source.getSalle() ) );
+
+        return dtoCours;
+    }
+
+    @Override
+    public Cours mapCours(DtoCours source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Cours cours = new Cours();
+
+        cours.setCapacite( source.getCapacite() );
+        cours.setCrenaux( crenauxToCrenaux1( source.getCrenaux() ) );
+        cours.setId( source.getId() );
+        cours.setLibelle( source.getLibelle() );
+        cours.setPrix( source.getPrix() );
+        cours.setSalle( mapSalle( source.getSalle() ) );
+
+        return cours;
+    }
+
+    @Override
+    public DtoMouvement mapMouvement(Mouvement source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        DtoMouvement dtoMouvement = new DtoMouvement();
+
+        dtoMouvement.setId( source.getId() );
+        dtoMouvement.setMontant( source.getMontant() );
+
+        return dtoMouvement;
+    }
+
+    @Override
+    public Mouvement mapMouvement(DtoMouvement source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Mouvement mouvement = new Mouvement();
+
+        mouvement.setId( source.getId() );
+        mouvement.setMontant( source.getMontant() );
+
+        return mouvement;
+    }
+
+    @Override
+    public DtoSalle mapSalle(Salle source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        DtoSalle dtoSalle = new DtoSalle();
+
+        dtoSalle.setCours( coursListToDtoCoursList( source.getCours() ) );
+        dtoSalle.setId( source.getId() );
+        dtoSalle.setNombreSalle( source.getNombreSalle() );
+
+        return dtoSalle;
+    }
+
+    @Override
+    public Salle mapSalle(DtoSalle source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Salle salle = new Salle();
+
+        salle.setCours( dtoCoursListToCoursList( source.getCours() ) );
+        salle.setId( source.getId() );
+        salle.setNombreSalle( source.getNombreSalle() );
+
+        return salle;
+    }
+
     protected MethodePayement methodePayementToMethodePayement(projet.commun.dto.MethodePayement methodePayement) {
         if ( methodePayement == null ) {
             return null;
@@ -134,5 +237,75 @@ public class IMapperEjbImpl implements IMapperEjb {
         }
 
         return methodePayement1;
+    }
+
+    protected projet.commun.dto.Crenaux crenauxToCrenaux(Crenaux crenaux) {
+        if ( crenaux == null ) {
+            return null;
+        }
+
+        projet.commun.dto.Crenaux crenaux1;
+
+        switch ( crenaux ) {
+            case APRESMIDI_DIMANCHE: crenaux1 = projet.commun.dto.Crenaux.APRESMIDI_DIMANCHE;
+            break;
+            case APRESMIDI_SAMEDI: crenaux1 = projet.commun.dto.Crenaux.APRESMIDI_SAMEDI;
+            break;
+            case MATIN_DIMANCHE: crenaux1 = projet.commun.dto.Crenaux.MATIN_DIMANCHE;
+            break;
+            case MATIN_SAMEDI: crenaux1 = projet.commun.dto.Crenaux.MATIN_SAMEDI;
+            break;
+            default: throw new IllegalArgumentException( "Unexpected enum constant: " + crenaux );
+        }
+
+        return crenaux1;
+    }
+
+    protected Crenaux crenauxToCrenaux1(projet.commun.dto.Crenaux crenaux) {
+        if ( crenaux == null ) {
+            return null;
+        }
+
+        Crenaux crenaux1;
+
+        switch ( crenaux ) {
+            case APRESMIDI_DIMANCHE: crenaux1 = Crenaux.APRESMIDI_DIMANCHE;
+            break;
+            case APRESMIDI_SAMEDI: crenaux1 = Crenaux.APRESMIDI_SAMEDI;
+            break;
+            case MATIN_DIMANCHE: crenaux1 = Crenaux.MATIN_DIMANCHE;
+            break;
+            case MATIN_SAMEDI: crenaux1 = Crenaux.MATIN_SAMEDI;
+            break;
+            default: throw new IllegalArgumentException( "Unexpected enum constant: " + crenaux );
+        }
+
+        return crenaux1;
+    }
+
+    protected List<DtoCours> coursListToDtoCoursList(List<Cours> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<DtoCours> list1 = new ArrayList<DtoCours>( list.size() );
+        for ( Cours cours : list ) {
+            list1.add( mapCours( cours ) );
+        }
+
+        return list1;
+    }
+
+    protected List<Cours> dtoCoursListToCoursList(List<DtoCours> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<Cours> list1 = new ArrayList<Cours>( list.size() );
+        for ( DtoCours dtoCours : list ) {
+            list1.add( mapCours( dtoCours ) );
+        }
+
+        return list1;
     }
 }

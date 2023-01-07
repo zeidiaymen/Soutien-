@@ -5,23 +5,23 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/template/page-standard.xhtml">
 
-	<ui:define name="titre">Liste des enfants</ui:define>
+	<ui:define name="titre">Liste des Comptes</ui:define>
 
 	<ui:define name="contenu">
 
 		<h:form>
 
-			<h:dataTable styleClass="liste" value="#{modelEnfant.liste}"
+			<h:dataTable styleClass="liste" value="#{modelCompte.liste}"
 				var="item" rowClasses="impair, pair"
 				columnClasses="left,left,center">
 				<h:column>
 
 					<f:facet name="header">
 
-						<h:outputText value="nom" />
+						<h:outputText value="id" />
 
 					</f:facet>
-							#{item.nom}
+							#{item.id}
 				
 				</h:column>
 				<!--

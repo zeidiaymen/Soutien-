@@ -31,8 +31,8 @@ Prix float NOT NULL,
 	IdSalle		INT				NOT NULL,
 Libelle varchar(25) NOT NULL,
 Capacite  int NOT NULL,
-Creneau varchar(25) NOT NULL,
-CHECK( creneau  IN ('MATIN_DIMANCHE','MATIN_SAMEDI','APRESMIDI_DIMANCHE','APRESMIDI_SAMEDI') ),
+Crenaux varchar(25) NOT NULL,
+CHECK( Crenaux  IN ('MATIN_DIMANCHE','MATIN_SAMEDI','APRESMIDI_DIMANCHE','APRESMIDI_SAMEDI') ),
 FOREIGN KEY (IdSalle) REFERENCES salle (IdSalle),
 PRIMARY KEY (IdCours)
 );

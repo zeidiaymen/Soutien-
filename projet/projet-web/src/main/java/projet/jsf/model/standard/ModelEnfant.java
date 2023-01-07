@@ -9,11 +9,9 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import projet.commun.dto.DtoCompte;
 import projet.commun.dto.DtoEnfant;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceEnfant;
-import projet.jsf.data.Compte;
 import projet.jsf.data.Enfant;
 import projet.jsf.data.mapper.IMapper;
 import projet.jsf.util.UtilJsf;
@@ -42,7 +40,7 @@ public class ModelEnfant implements Serializable {
 		if ( liste == null ) {
 			liste = new ArrayList<>();
 			for ( DtoEnfant dto : serviceCompte.listerTout() ) {
-				liste.add( mapper.map( dto ) );
+				liste.add( mapper.mapEnfant( dto ) );
 			}
 		}
 		return liste;
@@ -62,10 +60,10 @@ public class ModelEnfant implements Serializable {
 		if ( courant != null ) {
 			DtoEnfant dto = serviceCompte.retrouver( courant.getId() ); 
 			if ( dto == null ) {
-				UtilJsf.messageError( "Le compte demandé n'existe pas" );
+				UtilJsf.messageError( "L'enfant demandé n'existe pas" );
 				return "test/liste";
 			} else {
-				courant = mapper.map( dto );
+				courant = mapper.mapEnfant( dto );
 			}
 		}
 		return null;
