@@ -15,16 +15,23 @@
 				var="item" rowClasses="impair, pair"
 				columnClasses="left,left,center">
 				<h:column>
-
 					<f:facet name="header">
-
 						<h:outputText value="id" />
-
 					</f:facet>
-							#{item.id}
-				
+							#{item.id}			
 				</h:column>
-
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="montant" />
+					</f:facet>
+							#{item.montant}			
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="compte" />
+					</f:facet>
+							#{item.compte}			
+				</h:column>
 
 			</h:dataTable>
 

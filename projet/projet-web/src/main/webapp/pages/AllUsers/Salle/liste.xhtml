@@ -17,13 +17,27 @@
 				<h:column>
 
 					<f:facet name="header">
-
 						<h:outputText value="id" />
-
 					</f:facet>
-							#{item.id}
-				
+							#{item.id}				
 				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="nombre salle" />
+					</f:facet>
+							#{item.nombreSalle}			
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Cours" />
+					</f:facet>
+					<ui:repeat value="#{item.cours}" var="role" varStatus="status">
+					#{utilAppli.getLibelléDeRole(role)}#{not status.last ? ', ' : ''}
+				</ui:repeat>
+				</h:column>
+
 			</h:dataTable>
 			<h:button value="Ajouter" outcome="formulaire" />
 		</h:form>

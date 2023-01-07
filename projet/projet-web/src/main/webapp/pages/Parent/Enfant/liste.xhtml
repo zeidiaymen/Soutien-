@@ -15,17 +15,60 @@
 				var="item" rowClasses="impair, pair"
 				columnClasses="left,left,center">
 				<h:column>
-
 					<f:facet name="header">
-
 						<h:outputText value="id" />
-
 					</f:facet>
-							#{item.id}
-				
+							#{item.id}	
 				</h:column>
-
-
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="nom" />
+					</f:facet>
+							#{item.nom}	
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="prenom" />
+					</f:facet>
+							#{item.prenom}	
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Date de naissance" />
+					</f:facet>
+							#{item.dateDeNaissance}	
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="niveau d'etude" />
+					</f:facet>
+							#{item.niveauEtude}	
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="creneau" />
+					</f:facet>
+							#{item.creneau}	
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Methode de paiement" />
+					</f:facet>
+							#{item.methodePayement}	
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="compte" />
+					</f:facet>
+							#{item.compte}	
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="cours" />
+					</f:facet>
+							#{item.cours}	
+				</h:column>
+				
 			</h:dataTable>
 
 			<br />

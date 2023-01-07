@@ -1,82 +1,78 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <ui:composition template="/template/page-standard.xhtml"
-     xmlns="http://www.w3.org/1999/xhtml"
-     xmlns:h="http://java.sun.com/jsf/html"
-     xmlns:f="http://java.sun.com/jsf/core"
-     xmlns:ui="http://java.sun.com/jsf/facelets">>
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">>
 
 	 <f:metadata>
-		 <f:viewParam name="id" value="#{modelCompte.courant.id}" />
-		 <f:viewAction action="#{modelCompte.actualiserCourant()}" />
-	 </f:metadata>
+		<f:viewParam name="id" value="#{modelEnfant.courant.id}" />
+		<f:viewAction action="#{modelEnfant.actualiserCourant()}" />
+	</f:metadata>
 
-    <ui:define name="titre">Compte</ui:define>
+	<ui:define name="titre">Enfant</ui:define>
 
-    <ui:define name="contenu">
+	<ui:define name="contenu">
 
-	<h:form>
-	
-		<table class="form">
-			<tr>
-				<td>
-					<h:outputLabel for="id">Id :</h:outputLabel>				
-				</td>
-				<td>
-					<h:inputText id="id" size="5" readonly="true"
-						value="#{modelCompte.courant.id}" />
-					<br /><h:message for="id" errorClass="error"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<h:outputLabel for="pseudo">Pseudo :</h:outputLabel>				
-				</td>
-				<td>
-					<h:inputText id="pseudo" size="25" 
-						value="#{modelCompte.courant.pseudo}" />
-					<br /><h:message for="pseudo" errorClass="error"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<h:outputLabel for="motDePasse">Mot de passe :</h:outputLabel>				
-				</td>
-				<td>
-					<h:inputText id="motDePasse" size="25" 
-						value="#{modelCompte.courant.motDePasse}" />
-					<br /><h:message for="motDePasse" errorClass="error"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<h:outputLabel for="email">Email :</h:outputLabel>				
-				</td>
-				<td>
-					<h:inputText id="email" size="50" 
-						value="#{modelCompte.courant.email}" />
-					<br /><h:message for="email" errorClass="error"/>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<h:outputLabel for="roles">Roles :</h:outputLabel>				
-				</td>
-				<td>
-					<h:selectManyCheckbox id="roles" layout="pageDirection" 
-						value="#{modelCompte.courant.roles}">
-						<f:selectItems value="#{utilAppli.roles}" var="role" 
-							itemLabel="#{utilAppli.getLibelléDeRole(role)}"  />
-					</h:selectManyCheckbox>
-					<h:message for="roles" errorClass="error"/>
-				</td>
-			</tr>
-		</table>
+		<h:form>
 
-		<br /> 
-		<h:commandButton value="Valider" 
-			action="#{modelCompte.validerMiseAJour()}" />
-		<h:button value="Retour" outcome="comptes" />
-	</h:form>
+			<table class="form">
+				<tr>
+					<td><h:outputLabel for="id">Id :</h:outputLabel></td>
+					<td><h:inputText id="id" size="5" readonly="true"
+							value="#{modelEnfant.courant.id}" /> <br /> <h:message for="id"
+							errorClass="error" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="id">Nom :</h:outputLabel></td>
+					<td><h:inputText id="id" size="5" readonly="true"
+							value="#{modelEnfant.courant.nom}" /> <br /> <h:message
+							for="id" errorClass="error" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="id">Prenom :</h:outputLabel></td>
+					<td><h:inputText id="id" size="5" readonly="true"
+							value="#{modelEnfant.courant.prenom}" /> <br /> <h:message
+							for="id" errorClass="error" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="id">Date de naissance :</h:outputLabel>
+					</td>
+					<td><h:inputText id="id" size="5" readonly="true"
+							value="#{modelEnfant.courant.dateDeNaissance}" /> <br /> <h:message
+							for="id" errorClass="error" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="id">Niveau d'etude :</h:outputLabel></td>
+					<td><h:inputText id="id" size="5" readonly="true"
+							value="#{modelEnfant.courant.niveauEtude}" /> <br /> <h:message
+							for="id" errorClass="error" /></td>
+				<tr>
+					<td><h:outputLabel for="id">Creneau :</h:outputLabel></td>
+					<td><h:inputText id="id" size="5" readonly="true"
+							value="#{modelEnfant.courant.creneau}" /> <br /> <h:message
+							for="id" errorClass="error" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="compte">Compte :</h:outputLabel></td>
+					<td><h:inputText id="id" size="5" readonly="true"
+							value="#{modelEnfant.courant.compte}" /> <br /> <h:message
+							for="id" errorClass="error" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="cours">Cours :</h:outputLabel></td>
+					<td><h:inputText id="id" size="5" readonly="true"
+							value="#{modelEnfant.courant.cours}" /> <br /> <h:message
+							for="id" errorClass="error" /></td>
+				</tr>
+			</table>
+
+			<br />
+			<h:commandButton value="Valider"
+				action="#{modelCours.validerMiseAJour()}" />
+
+			<h:button value="Retour" outcome="comptes" />
+		</h:form>
 
 	</ui:define>
 

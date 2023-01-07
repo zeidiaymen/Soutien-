@@ -19,7 +19,7 @@ import projet.ejb.data.Salle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-01-07T13:12:26+0100",
+    date = "2023-01-07T20:44:23+0100",
     comments = "version: 1.5.3.Final, compiler: Eclipse JDT (IDE) 1.4.100.v20220318-0906, environment: Java 18.0.2 (Eclipse Adoptium)"
 )
 @ApplicationScoped
@@ -33,15 +33,15 @@ public class IMapperEjbImpl implements IMapperEjb {
 
         Compte compte = new Compte();
 
-        compte.setEmail( source.getEmail() );
+        compte.setSolde( source.getSolde() );
         compte.setId( source.getId() );
-        compte.setMotDePasse( source.getMotDePasse() );
         compte.setPseudo( source.getPseudo() );
+        compte.setMotDePasse( source.getMotDePasse() );
+        compte.setEmail( source.getEmail() );
         List<String> list = source.getRoles();
         if ( list != null ) {
             compte.setRoles( new ArrayList<String>( list ) );
         }
-        compte.setSolde( source.getSolde() );
 
         return compte;
     }
@@ -75,13 +75,13 @@ public class IMapperEjbImpl implements IMapperEjb {
 
         Enfant enfant = new Enfant();
 
-        enfant.setCreneau( source.getCreneau() );
-        enfant.setDateDeNaissance( source.getDateDeNaissance() );
         enfant.setId( source.getId() );
-        enfant.setMethodePayement( methodePayementToMethodePayement( source.getMethodePayement() ) );
-        enfant.setNiveauEtude( source.getNiveauEtude() );
         enfant.setNom( source.getNom() );
         enfant.setPrenom( source.getPrenom() );
+        enfant.setDateDeNaissance( source.getDateDeNaissance() );
+        enfant.setNiveauEtude( source.getNiveauEtude() );
+        enfant.setCreneau( source.getCreneau() );
+        enfant.setMethodePayement( methodePayementToMethodePayement( source.getMethodePayement() ) );
 
         return enfant;
     }
@@ -131,11 +131,11 @@ public class IMapperEjbImpl implements IMapperEjb {
 
         Cours cours = new Cours();
 
-        cours.setCapacite( source.getCapacite() );
         cours.setCrenaux( crenauxToCrenaux1( source.getCrenaux() ) );
-        cours.setId( source.getId() );
-        cours.setLibelle( source.getLibelle() );
         cours.setPrix( source.getPrix() );
+        cours.setLibelle( source.getLibelle() );
+        cours.setCapacite( source.getCapacite() );
+        cours.setId( source.getId() );
         cours.setSalle( mapSalle( source.getSalle() ) );
 
         return cours;
@@ -192,9 +192,9 @@ public class IMapperEjbImpl implements IMapperEjb {
 
         Salle salle = new Salle();
 
-        salle.setCours( dtoCoursListToCoursList( source.getCours() ) );
         salle.setId( source.getId() );
         salle.setNombreSalle( source.getNombreSalle() );
+        salle.setCours( dtoCoursListToCoursList( source.getCours() ) );
 
         return salle;
     }
@@ -247,13 +247,13 @@ public class IMapperEjbImpl implements IMapperEjb {
         projet.commun.dto.Crenaux crenaux1;
 
         switch ( crenaux ) {
-            case APRESMIDI_DIMANCHE: crenaux1 = projet.commun.dto.Crenaux.APRESMIDI_DIMANCHE;
-            break;
-            case APRESMIDI_SAMEDI: crenaux1 = projet.commun.dto.Crenaux.APRESMIDI_SAMEDI;
-            break;
             case MATIN_DIMANCHE: crenaux1 = projet.commun.dto.Crenaux.MATIN_DIMANCHE;
             break;
+            case APRESMIDI_DIMANCHE: crenaux1 = projet.commun.dto.Crenaux.APRESMIDI_DIMANCHE;
+            break;
             case MATIN_SAMEDI: crenaux1 = projet.commun.dto.Crenaux.MATIN_SAMEDI;
+            break;
+            case APRESMIDI_SAMEDI: crenaux1 = projet.commun.dto.Crenaux.APRESMIDI_SAMEDI;
             break;
             default: throw new IllegalArgumentException( "Unexpected enum constant: " + crenaux );
         }

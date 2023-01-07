@@ -10,7 +10,7 @@
 		<f:viewAction action="#{modelMouvement.actualiserCourant()}" />
 	</f:metadata>
 
-	<ui:define name="titre">Compte</ui:define>
+	<ui:define name="titre">Mouvement</ui:define>
 
 	<ui:define name="contenu">
 
@@ -20,8 +20,26 @@
 				<tr>
 					<td><h:outputLabel for="id">Id :</h:outputLabel></td>
 					<td><h:inputText id="id" size="5" readonly="true"
-							value="#{modelMouvement.courant.id}" /> <br />
-					<h:message for="id" errorClass="error" /></td>
+							value="#{modelMouvement.courant.id}" /> <br /> <h:message
+							for="id" errorClass="error" /></td>
+				</tr>
+
+			</table>
+			<table class="form">
+				<tr>
+					<td><h:outputLabel for="montant">Montant :</h:outputLabel></td>
+					<td><h:inputText id="montant" size="5" readonly="true"
+							value="#{modelMouvement.courant.montant}" /> <br /> <h:message
+							for="montant" errorClass="error" /></td>
+				</tr>
+
+			</table>
+			<table class="form">
+				<tr>
+					<td><h:outputLabel for="compte">Compte :</h:outputLabel></td>
+					<td><h:inputText id="compte" size="5" readonly="true"
+							value="#{modelMouvement.courant.compte}" /> <br /> <h:message
+							for="compte" errorClass="error" /></td>
 				</tr>
 
 			</table>
