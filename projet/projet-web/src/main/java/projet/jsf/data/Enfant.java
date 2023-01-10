@@ -2,6 +2,7 @@ package projet.jsf.data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 public class Enfant implements Serializable {
 
@@ -12,6 +13,7 @@ public class Enfant implements Serializable {
 	private Date dateDeNaissance;
 	private String niveauEtude;
 	private String creneau;
+	
 	private MethodePayement methodePayement;
 
 	private Compte compte;
@@ -105,6 +107,36 @@ public class Enfant implements Serializable {
 
 	public void setCours(Cours cours) {
 		this.cours = cours;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Enfant [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", dateDeNaissance=" + dateDeNaissance
+				+ ", niveauEtude=" + niveauEtude + ", creneau=" + creneau + ", methodePayement=" + methodePayement
+				+ ", compte=" + compte + ", cours=" + cours + "]";
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Enfant other = (Enfant) obj;
+		return Objects.equals(id, other.id);
 	}
 
 }

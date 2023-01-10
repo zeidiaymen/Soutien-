@@ -7,6 +7,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -27,14 +29,15 @@ public class Enfant implements Serializable {
 	private Date dateDeNaissance;
 	private String niveauEtude;
 	private String creneau;
+	@Enumerated(EnumType.STRING)
 	private MethodePayement methodePayement;
 
 	@ManyToOne
-	@JoinColumn(name = "idcompte")
+	@JoinColumn(name = "idCompte")
 	private Compte compte;
 
 	@ManyToOne
-	@JoinColumn(name = "idcours")
+	@JoinColumn(name = "idCours")
 	private Cours cours;
 
 	public Enfant() {

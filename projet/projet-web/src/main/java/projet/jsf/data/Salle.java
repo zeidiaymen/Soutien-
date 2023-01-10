@@ -2,6 +2,7 @@ package projet.jsf.data;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @SuppressWarnings("serial")
 public class Salle implements Serializable {
@@ -14,11 +15,11 @@ public class Salle implements Serializable {
 		super();
 	}
 
-	public Salle(int id, int nombreSalle, List<Cours> cours) {
+	public Salle(int id, int nombreSalle) {
 		super();
 		this.id = id;
 		this.nombreSalle = nombreSalle;
-		this.cours = cours;
+
 	}
 
 	public int getId() {
@@ -43,6 +44,23 @@ public class Salle implements Serializable {
 
 	public void setCours(List<Cours> cours) {
 		this.cours = cours;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(cours);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Salle other = (Salle) obj;
+		return Objects.equals(cours, other.cours);
 	}
 
 }

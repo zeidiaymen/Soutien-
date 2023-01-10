@@ -19,32 +19,25 @@
 			<table class="form">
 				<tr>
 					<td><h:outputLabel for="id">Id :</h:outputLabel></td>
-					<td><h:inputText id="id" size="5" readonly="true"
-							value="#{modelSalle.courant.id}" /> <br />
-					<h:message for="id" errorClass="error" /></td>
+					<td><h:inputText id="id" size="5" readonly="false"
+							value="#{modelSalle.courant.id}" /> <br /> <h:message for="id"
+							errorClass="error" /></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel for="nombreSalle">Nombre salle :</h:outputLabel>
 					</td>
 					<td><h:inputText id="nombreSalle" size="25"
-							value="#{modelSalle.courant.nombreSalle}" /> <br />
-					<h:message for="pseudo" errorClass="error" /></td>
+							value="#{modelSalle.courant.nombreSalle}" /> <br /> <h:message
+							for="pseudo" errorClass="error" /></td>
 				</tr>
-				<tr>
-					<td><h:outputLabel for="cours">Cours :</h:outputLabel></td>
-					<td><h:selectOneMenu id="cours"
-							value="#{modelSalle.courant.cours}" converter="#{CoursConverter}">
-							<f:selectItems value="#{modelCours.liste}" var="item"
-								itemLabel="#{item.id}" />
-						</h:selectOneMenu> <br /> <h:message for="cours" errorClass="error" /></td>
-				</tr>
+
 
 
 			</table>
 
 			<br />
 			<h:commandButton value="Valider"
-				action="#{modelCompte.validerMiseAJour()}" />
+				action="#{modelSalle.validerMiseAJour()}" />
 			<h:button value="Retour" outcome="comptes" />
 		</h:form>
 

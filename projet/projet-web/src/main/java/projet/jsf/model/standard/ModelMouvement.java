@@ -15,6 +15,7 @@ import projet.commun.service.IServiceMouvement;
 import projet.jsf.data.Compte;
 import projet.jsf.data.Mouvement;
 import projet.jsf.data.mapper.IMapper;
+import projet.jsf.util.CompteActif;
 import projet.jsf.util.UtilJsf;
 
 @SuppressWarnings("serial")
@@ -30,6 +31,9 @@ public class ModelMouvement implements Serializable {
 
 	@EJB
 	private IServiceMouvement serviceMouvement;
+
+	@Inject
+	private CompteActif compteActif;
 
 	@Inject
 	private IMapper mapper;
@@ -73,8 +77,11 @@ public class ModelMouvement implements Serializable {
 	public String validerMiseAJour() {
 		try {
 			if (courant.getId() == null) {
+				courant.setCompte(compteActif);
+
 				serviceMouvement.inserer(mapper.mapMouvement(courant));
 			} else {
+				courant.setCompte(compteActif);
 				serviceMouvement.modifier(mapper.mapMouvement(courant));
 			}
 			UtilJsf.messageInfo("Mise à jour effectuée avec succès.");

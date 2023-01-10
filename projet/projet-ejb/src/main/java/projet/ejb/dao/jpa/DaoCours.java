@@ -52,7 +52,7 @@ public class DaoCours implements IDaoCours {
 
 	@Override
 	public List<Cours> listerTout() {
-		String jpql = "SELECT c from Cours c ";
+		String jpql = "SELECT c FROM Cours c";
 		var res = em.createQuery(jpql, Cours.class);
 		return res.getResultList();
 	}

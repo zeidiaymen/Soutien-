@@ -8,6 +8,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -19,10 +21,9 @@ public class Cours implements Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "idCours")
-	private int id;
+	private int idCours;
 	
 	@ManyToOne
-	
 	@JoinColumn(name = "idSalle")
 	private Salle salle;
 	
@@ -32,6 +33,7 @@ public class Cours implements Serializable {
 	private double prix;
 	private String libelle;
 	private int capacite;
+	@Enumerated(EnumType.STRING)
 	private Crenaux crenaux;
 
 	public double getPrix() {
@@ -67,11 +69,11 @@ public class Cours implements Serializable {
 	}
 
 	public int getId() {
-		return id;
+		return idCours;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.idCours = id;
 	}
 
 	public Salle getSalle() {

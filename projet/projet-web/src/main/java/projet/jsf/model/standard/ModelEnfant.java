@@ -72,7 +72,7 @@ public class ModelEnfant implements Serializable {
 	
 	// Actions
 	
-	/*public String validerMiseAJour() {
+	public String validerMiseAJour() {
 		try {
 			if ( courant == null) {
 				serviceCompte.inserer( mapper.mapEnfant(courant) );
@@ -86,7 +86,7 @@ public class ModelEnfant implements Serializable {
 			UtilJsf.messageError(e);
 			return null;
 		}
-	}*/
+	}
 	
 	public String supprimer( Enfant item ) {
 		try {

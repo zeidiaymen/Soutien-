@@ -17,6 +17,7 @@ public class CompteActif extends Compte {
 		return getPseudo() != null;
 	}	
 	
+	
 	public boolean isUtilisateur() {
 		return isLoggedIn() && isInRole( UTILISATEUR );
 	}

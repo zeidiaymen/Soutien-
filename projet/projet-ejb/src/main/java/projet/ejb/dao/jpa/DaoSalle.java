@@ -53,7 +53,7 @@ public class DaoSalle implements IDaoSalle {
 	@TransactionAttribute(NOT_SUPPORTED)
 	public List<Salle> listerTout() {
 		em.clear();
-		var jpql = "SELECT c FROM Salle c ORDER BY c.nombreSalle";
+		var jpql = "SELECT s FROM Salle s";
 		var query = em.createQuery(jpql, Salle.class);
 		return query.getResultList();
 	}

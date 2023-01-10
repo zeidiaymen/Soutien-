@@ -31,16 +31,25 @@ public interface IMapper {
 
 	DtoEnfant mapEnfant(Enfant source);
 
+	Enfant duplicate(Enfant source);
+
+//
+	Salle mapSalle(DtoSalle source);
+
+	DtoSalle mapSalle(Salle source);
+
+	Salle duplicate(Salle source);
+
 	DtoCours mapCours(Cours source);
 
 	Cours mapCours(DtoCours source);
+
+	Cours duplicate(Cours source);
 
 	DtoMouvement mapMouvement(Mouvement source);
 
 	Mouvement mapMouvement(DtoMouvement source);
 
-	DtoSalle mapSalle(Salle source);
-
-	Salle mapSalle(DtoSalle source);
+	Mouvement duplicate(Mouvement source);
 
 }

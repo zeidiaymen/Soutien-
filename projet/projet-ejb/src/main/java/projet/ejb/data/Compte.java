@@ -25,8 +25,8 @@ public class Compte {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "idcompte")
-	private int id;
+	@Column(name = "idCompte")
+	private int idCompte;
 
 	@Column(name = "pseudo")
 	private String pseudo;
@@ -46,6 +46,7 @@ public class Compte {
 	private double solde = 0;
 
 	@Column(name = "enfants")
+	
 	@OneToMany(mappedBy = "compte", cascade = CascadeType.ALL)
 	private List<Enfant> enfants;
 	@Column(name = "mouvements")
@@ -65,7 +66,7 @@ public class Compte {
 	}
 
 	public Compte(int id, String pseudo, String motDePasse, String email) {
-		this.id = id;
+		this.idCompte = id;
 		this.pseudo = pseudo;
 		this.motDePasse = motDePasse;
 		this.email = email;
@@ -74,11 +75,11 @@ public class Compte {
 	// Getters & setters
 
 	public int getId() {
-		return id;
+		return idCompte;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.idCompte = id;
 	}
 
 	public String getPseudo() {
@@ -119,7 +120,7 @@ public class Compte {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + idCompte;
 		return result;
 	}
 
@@ -132,7 +133,7 @@ public class Compte {
 		if (getClass() != obj.getClass())
 			return false;
 		Compte other = (Compte) obj;
-		if (id != other.id)
+		if (idCompte != other.idCompte)
 			return false;
 		return true;
 	}

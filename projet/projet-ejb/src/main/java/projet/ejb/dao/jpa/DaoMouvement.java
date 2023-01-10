@@ -50,7 +50,7 @@ public class DaoMouvement implements IDaoMouvement {
 	@TransactionAttribute(NOT_SUPPORTED)
 	public List<Mouvement> listerTout() {
 		em.clear();
-		var jpql = "SELECT c FROM Mouvement c ";
+		var jpql = "SELECT c FROM Mouvement c";
 		var query = em.createQuery(jpql, Mouvement.class);
 		return query.getResultList();
 	}

@@ -5,7 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/template/page-standard.xhtml">
 
-	<ui:define name="titre">Liste des salles</ui:define>
+	<ui:define name="titre">Liste des Salles</ui:define>
 
 	<ui:define name="contenu">
 
@@ -15,31 +15,23 @@
 				var="item" rowClasses="impair, pair"
 				columnClasses="left,left,center">
 				<h:column>
-
 					<f:facet name="header">
 						<h:outputText value="id" />
 					</f:facet>
-							#{item.id}				
+							#{item.id}	
 				</h:column>
-
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="nombre salle" />
+						<h:outputText value="numéro de salle" />
 					</f:facet>
-							#{item.nombreSalle}			
-				</h:column>
-
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="Cours" />
-					</f:facet>
-					<ui:repeat value="#{item.cours}" var="role" varStatus="status">
-					#{utilAppli.getLibelléDeRole(role)}#{not status.last ? ', ' : ''}
-				</ui:repeat>
+							#{item.nombreSalle}	
 				</h:column>
 
 			</h:dataTable>
+
+			<br />
 			<h:button value="Ajouter" outcome="formulaire" />
+
 		</h:form>
 
 	</ui:define>

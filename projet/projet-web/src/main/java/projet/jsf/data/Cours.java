@@ -1,5 +1,7 @@
 package projet.jsf.data;
 
+import java.util.Objects;
+
 @SuppressWarnings("serial")
 public class Cours {
 
@@ -70,6 +72,23 @@ public class Cours {
 
 	public void setSalle(Salle salle) {
 		this.salle = salle;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cours other = (Cours) obj;
+		return Objects.equals(id, other.id);
 	}
 
 }

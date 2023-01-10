@@ -19,7 +19,7 @@ import projet.jsf.data.Salle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-01-07T20:44:24+0100",
+    date = "2023-01-09T23:14:11+0100",
     comments = "version: 1.5.3.Final, compiler: Eclipse JDT (IDE) 1.4.100.v20220318-0906, environment: Java 18.0.2 (Eclipse Adoptium)"
 )
 @ApplicationScoped
@@ -33,16 +33,16 @@ public class IMapperImpl implements IMapper {
 
         Compte compte = new Compte();
 
-        compte.setId( source.getId() );
-        compte.setPseudo( source.getPseudo() );
-        compte.setMotDePasse( source.getMotDePasse() );
         compte.setEmail( source.getEmail() );
-        List<String> list = source.getRoles();
-        if ( list != null ) {
-            compte.setRoles( new ArrayList<String>( list ) );
+        compte.setId( source.getId() );
+        compte.setMotDePasse( source.getMotDePasse() );
+        compte.setMouvements( dtoMouvementListToMouvementList( source.getMouvements() ) );
+        compte.setPseudo( source.getPseudo() );
+        List<String> list1 = source.getRoles();
+        if ( list1 != null ) {
+            compte.setRoles( new ArrayList<String>( list1 ) );
         }
         compte.setSolde( source.getSolde() );
-        compte.setMouvements( dtoMouvementListToMouvementList( source.getMouvements() ) );
 
         return compte;
     }
@@ -79,21 +79,21 @@ public class IMapperImpl implements IMapper {
 
         Compte compte = new Compte();
 
+        compte.setEmail( source.getEmail() );
         if ( source.getId() != null ) {
             compte.setId( source.getId() );
         }
-        compte.setPseudo( source.getPseudo() );
         compte.setMotDePasse( source.getMotDePasse() );
-        compte.setEmail( source.getEmail() );
-        List<String> list = source.getRoles();
+        List<Mouvement> list = source.getMouvements();
         if ( list != null ) {
-            compte.setRoles( new ArrayList<String>( list ) );
+            compte.setMouvements( new ArrayList<Mouvement>( list ) );
+        }
+        compte.setPseudo( source.getPseudo() );
+        List<String> list1 = source.getRoles();
+        if ( list1 != null ) {
+            compte.setRoles( new ArrayList<String>( list1 ) );
         }
         compte.setSolde( source.getSolde() );
-        List<Mouvement> list1 = source.getMouvements();
-        if ( list1 != null ) {
-            compte.setMouvements( new ArrayList<Mouvement>( list1 ) );
-        }
 
         return compte;
     }
@@ -104,45 +104,45 @@ public class IMapperImpl implements IMapper {
             return target;
         }
 
+        target.setEmail( source.getEmail() );
         if ( source.getId() != null ) {
             target.setId( source.getId() );
         }
-        target.setPseudo( source.getPseudo() );
         target.setMotDePasse( source.getMotDePasse() );
-        target.setEmail( source.getEmail() );
-        if ( target.getRoles() != null ) {
-            List<String> list = source.getRoles();
-            if ( list != null ) {
-                target.getRoles().clear();
-                target.getRoles().addAll( list );
-            }
-            else {
-                target.setRoles( null );
-            }
-        }
-        else {
-            List<String> list = source.getRoles();
-            if ( list != null ) {
-                target.setRoles( new ArrayList<String>( list ) );
-            }
-        }
-        target.setSolde( source.getSolde() );
         if ( target.getMouvements() != null ) {
-            List<Mouvement> list1 = source.getMouvements();
-            if ( list1 != null ) {
+            List<Mouvement> list = source.getMouvements();
+            if ( list != null ) {
                 target.getMouvements().clear();
-                target.getMouvements().addAll( list1 );
+                target.getMouvements().addAll( list );
             }
             else {
                 target.setMouvements( null );
             }
         }
         else {
-            List<Mouvement> list1 = source.getMouvements();
-            if ( list1 != null ) {
-                target.setMouvements( new ArrayList<Mouvement>( list1 ) );
+            List<Mouvement> list = source.getMouvements();
+            if ( list != null ) {
+                target.setMouvements( new ArrayList<Mouvement>( list ) );
             }
         }
+        target.setPseudo( source.getPseudo() );
+        if ( target.getRoles() != null ) {
+            List<String> list1 = source.getRoles();
+            if ( list1 != null ) {
+                target.getRoles().clear();
+                target.getRoles().addAll( list1 );
+            }
+            else {
+                target.setRoles( null );
+            }
+        }
+        else {
+            List<String> list1 = source.getRoles();
+            if ( list1 != null ) {
+                target.setRoles( new ArrayList<String>( list1 ) );
+            }
+        }
+        target.setSolde( source.getSolde() );
 
         return target;
     }
@@ -155,15 +155,15 @@ public class IMapperImpl implements IMapper {
 
         Enfant enfant = new Enfant();
 
-        enfant.setId( source.getId() );
-        enfant.setNom( source.getNom() );
-        enfant.setPrenom( source.getPrenom() );
-        enfant.setDateDeNaissance( source.getDateDeNaissance() );
-        enfant.setNiveauEtude( source.getNiveauEtude() );
-        enfant.setCreneau( source.getCreneau() );
-        enfant.setMethodePayement( methodePayementToMethodePayement( source.getMethodePayement() ) );
         enfant.setCompte( map( source.getCompte() ) );
         enfant.setCours( mapCours( source.getCours() ) );
+        enfant.setCreneau( source.getCreneau() );
+        enfant.setDateDeNaissance( source.getDateDeNaissance() );
+        enfant.setId( source.getId() );
+        enfant.setMethodePayement( methodePayementToMethodePayement( source.getMethodePayement() ) );
+        enfant.setNiveauEtude( source.getNiveauEtude() );
+        enfant.setNom( source.getNom() );
+        enfant.setPrenom( source.getPrenom() );
 
         return enfant;
     }
@@ -189,6 +189,75 @@ public class IMapperImpl implements IMapper {
         dtoEnfant.setPrenom( source.getPrenom() );
 
         return dtoEnfant;
+    }
+
+    @Override
+    public Enfant duplicate(Enfant source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Enfant enfant = new Enfant();
+
+        enfant.setCompte( duplicate( source.getCompte() ) );
+        enfant.setCours( duplicate( source.getCours() ) );
+        enfant.setCreneau( source.getCreneau() );
+        enfant.setDateDeNaissance( source.getDateDeNaissance() );
+        enfant.setId( source.getId() );
+        enfant.setMethodePayement( source.getMethodePayement() );
+        enfant.setNiveauEtude( source.getNiveauEtude() );
+        enfant.setNom( source.getNom() );
+        enfant.setPrenom( source.getPrenom() );
+
+        return enfant;
+    }
+
+    @Override
+    public Salle mapSalle(DtoSalle source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Salle salle = new Salle();
+
+        salle.setCours( dtoCoursListToCoursList( source.getCours() ) );
+        salle.setId( source.getId() );
+        salle.setNombreSalle( source.getNombreSalle() );
+
+        return salle;
+    }
+
+    @Override
+    public DtoSalle mapSalle(Salle source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        DtoSalle dtoSalle = new DtoSalle();
+
+        dtoSalle.setCours( coursListToDtoCoursList( source.getCours() ) );
+        dtoSalle.setId( source.getId() );
+        dtoSalle.setNombreSalle( source.getNombreSalle() );
+
+        return dtoSalle;
+    }
+
+    @Override
+    public Salle duplicate(Salle source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Salle salle = new Salle();
+
+        List<Cours> list = source.getCours();
+        if ( list != null ) {
+            salle.setCours( new ArrayList<Cours>( list ) );
+        }
+        salle.setId( source.getId() );
+        salle.setNombreSalle( source.getNombreSalle() );
+
+        return salle;
     }
 
     @Override
@@ -232,6 +301,27 @@ public class IMapperImpl implements IMapper {
     }
 
     @Override
+    public Cours duplicate(Cours source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Cours cours = new Cours();
+
+        if ( source.getId() != null ) {
+            cours.setId( source.getId() );
+        }
+        cours.setPrix( source.getPrix() );
+        cours.setLibelle( source.getLibelle() );
+        cours.setCapacite( source.getCapacite() );
+        cours.setCrenaux( source.getCrenaux() );
+        cours.setEnfant( duplicate( source.getEnfant() ) );
+        cours.setSalle( duplicate( source.getSalle() ) );
+
+        return cours;
+    }
+
+    @Override
     public DtoMouvement mapMouvement(Mouvement source) {
         if ( source == null ) {
             return null;
@@ -256,41 +346,28 @@ public class IMapperImpl implements IMapper {
 
         Mouvement mouvement = new Mouvement();
 
+        mouvement.setCompte( map( source.getCompte() ) );
         mouvement.setId( source.getId() );
         mouvement.setMontant( source.getMontant() );
-        mouvement.setCompte( map( source.getCompte() ) );
 
         return mouvement;
     }
 
     @Override
-    public DtoSalle mapSalle(Salle source) {
+    public Mouvement duplicate(Mouvement source) {
         if ( source == null ) {
             return null;
         }
 
-        DtoSalle dtoSalle = new DtoSalle();
+        Mouvement mouvement = new Mouvement();
 
-        dtoSalle.setCours( coursListToDtoCoursList( source.getCours() ) );
-        dtoSalle.setId( source.getId() );
-        dtoSalle.setNombreSalle( source.getNombreSalle() );
-
-        return dtoSalle;
-    }
-
-    @Override
-    public Salle mapSalle(DtoSalle source) {
-        if ( source == null ) {
-            return null;
+        mouvement.setCompte( duplicate( source.getCompte() ) );
+        if ( source.getId() != null ) {
+            mouvement.setId( source.getId() );
         }
+        mouvement.setMontant( source.getMontant() );
 
-        Salle salle = new Salle();
-
-        salle.setId( source.getId() );
-        salle.setNombreSalle( source.getNombreSalle() );
-        salle.setCours( dtoCoursListToCoursList( source.getCours() ) );
-
-        return salle;
+        return mouvement;
     }
 
     protected List<Mouvement> dtoMouvementListToMouvementList(List<DtoMouvement> list) {
@@ -359,6 +436,32 @@ public class IMapperImpl implements IMapper {
         return methodePayement1;
     }
 
+    protected List<Cours> dtoCoursListToCoursList(List<DtoCours> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<Cours> list1 = new ArrayList<Cours>( list.size() );
+        for ( DtoCours dtoCours : list ) {
+            list1.add( mapCours( dtoCours ) );
+        }
+
+        return list1;
+    }
+
+    protected List<DtoCours> coursListToDtoCoursList(List<Cours> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<DtoCours> list1 = new ArrayList<DtoCours>( list.size() );
+        for ( Cours cours : list ) {
+            list1.add( mapCours( cours ) );
+        }
+
+        return list1;
+    }
+
     protected projet.commun.dto.Crenaux crenauxToCrenaux(Crenaux crenaux) {
         if ( crenaux == null ) {
             return null;
@@ -367,13 +470,13 @@ public class IMapperImpl implements IMapper {
         projet.commun.dto.Crenaux crenaux1;
 
         switch ( crenaux ) {
-            case MATIN_DIMANCHE: crenaux1 = projet.commun.dto.Crenaux.MATIN_DIMANCHE;
-            break;
             case APRESMIDI_DIMANCHE: crenaux1 = projet.commun.dto.Crenaux.APRESMIDI_DIMANCHE;
             break;
-            case MATIN_SAMEDI: crenaux1 = projet.commun.dto.Crenaux.MATIN_SAMEDI;
-            break;
             case APRESMIDI_SAMEDI: crenaux1 = projet.commun.dto.Crenaux.APRESMIDI_SAMEDI;
+            break;
+            case MATIN_DIMANCHE: crenaux1 = projet.commun.dto.Crenaux.MATIN_DIMANCHE;
+            break;
+            case MATIN_SAMEDI: crenaux1 = projet.commun.dto.Crenaux.MATIN_SAMEDI;
             break;
             default: throw new IllegalArgumentException( "Unexpected enum constant: " + crenaux );
         }
@@ -401,31 +504,5 @@ public class IMapperImpl implements IMapper {
         }
 
         return crenaux1;
-    }
-
-    protected List<DtoCours> coursListToDtoCoursList(List<Cours> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<DtoCours> list1 = new ArrayList<DtoCours>( list.size() );
-        for ( Cours cours : list ) {
-            list1.add( mapCours( cours ) );
-        }
-
-        return list1;
-    }
-
-    protected List<Cours> dtoCoursListToCoursList(List<DtoCours> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<Cours> list1 = new ArrayList<Cours>( list.size() );
-        for ( DtoCours dtoCours : list ) {
-            list1.add( mapCours( dtoCours ) );
-        }
-
-        return list1;
     }
 }

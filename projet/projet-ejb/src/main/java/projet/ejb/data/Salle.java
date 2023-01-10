@@ -18,21 +18,19 @@ import javax.persistence.OneToMany;
 public class Salle implements Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "idsalle")
-	private int id;
+	@Column(name = "idSalle")
+	private int idSalle;
 	private int nombreSalle;
 	@Column(name = "cours")
-
-	@OneToMany(mappedBy = "salle", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-
+	@OneToMany(mappedBy = "salle", cascade = CascadeType.ALL)
 	private List<Cours> cours;
-
+	
 	public int getId() {
-		return id;
+		return idSalle;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.idSalle = id;
 	}
 
 	public int getNombreSalle() {

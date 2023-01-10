@@ -28,25 +28,17 @@
 			<table class="form">
 				<tr>
 					<td><h:outputLabel for="montant">Montant :</h:outputLabel></td>
-					<td><h:inputText id="montant" size="5" readonly="true"
+					<td><h:inputText id="montant" size="5" readonly="false"
 							value="#{modelMouvement.courant.montant}" /> <br /> <h:message
 							for="montant" errorClass="error" /></td>
 				</tr>
 
 			</table>
-			<table class="form">
-				<tr>
-					<td><h:outputLabel for="compte">Compte :</h:outputLabel></td>
-					<td><h:inputText id="compte" size="5" readonly="true"
-							value="#{modelMouvement.courant.compte}" /> <br /> <h:message
-							for="compte" errorClass="error" /></td>
-				</tr>
 
-			</table>
 
 			<br />
 			<h:commandButton value="Valider"
-				action="#{modelCompte.validerMiseAJour()}" />
+				action="#{modelMouvement.validerMiseAJour()}" />
 			<h:button value="Retour" outcome="comptes" />
 		</h:form>
 

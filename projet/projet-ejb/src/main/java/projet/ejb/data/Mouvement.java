@@ -16,8 +16,10 @@ import javax.persistence.ManyToOne;
 public class Mouvement implements Serializable {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "idmvt")
+	@Column(name = "idmouvement")
 	private int id;
+	@Column(name = "prix")
+
 	private double montant;
 	@ManyToOne
 	@JoinColumn(name = "idcompte")
@@ -39,13 +41,7 @@ public class Mouvement implements Serializable {
 		this.montant = montant;
 	}
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
+	
 
 	public Compte getCpt() {
 		return cpt;
@@ -54,7 +50,5 @@ public class Mouvement implements Serializable {
 	public void setCpt(Compte cpt) {
 		this.cpt = cpt;
 	}
-
-	private Date date = new Date();
 
 }
