@@ -43,11 +43,11 @@ public class Mouvement implements Serializable {
 
 	
 
-	public Compte getCpt() {
+	public Compte getCompte() {
 		return cpt;
 	}
 
-	public void setCpt(Compte cpt) {
+	public void setCompte(Compte cpt) {
 		this.cpt = cpt;
 	}
 

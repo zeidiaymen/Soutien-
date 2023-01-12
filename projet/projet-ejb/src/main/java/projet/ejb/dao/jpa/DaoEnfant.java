@@ -14,54 +14,49 @@ import javax.persistence.PersistenceContext;
 import projet.ejb.dao.IDaoEnfant;
 import projet.ejb.data.Enfant;
 
-
 @Stateless
 @Local
-@TransactionAttribute( MANDATORY )
+@TransactionAttribute(MANDATORY)
 public class DaoEnfant implements IDaoEnfant {
 
-	
 	// Champs
-	
+
 	@PersistenceContext
-	private EntityManager	em;
-	
-	
+	private EntityManager em;
+
 	// Actions
-	
+
 	@Override
-	public int inserer(Enfant compte) {
-		em.persist(compte);
+	public int inserer(Enfant enfant) {
+		System.out.println("testing dao id " + enfant.getCompte().getId());
+		em.persist(enfant);
 		em.flush();
-		return compte.getId();
+		return enfant.getId();
 	}
 
 	@Override
-	public void modifier(Enfant compte) {
-		em.merge( compte );
+	public void modifier(Enfant enfant) {
+		em.merge(enfant);
 	}
 
 	@Override
 	public void supprimer(int idCompte) {
-		em.remove( retrouver(idCompte) );
+		em.remove(retrouver(idCompte));
 	}
 
 	@Override
-	@TransactionAttribute( NOT_SUPPORTED )
+	@TransactionAttribute(NOT_SUPPORTED)
 	public Enfant retrouver(int idCompte) {
-		return em.find( Enfant.class, idCompte );
+		return em.find(Enfant.class, idCompte);
 	}
 
 	@Override
-	@TransactionAttribute( NOT_SUPPORTED )
+	@TransactionAttribute(NOT_SUPPORTED)
 	public List<Enfant> listerTout() {
 		em.clear();
 		var jpql = "SELECT c FROM Enfant c ORDER BY c.nom";
-		var query = em.createQuery( jpql, Enfant.class );
+		var query = em.createQuery(jpql, Enfant.class);
 		return query.getResultList();
 	}
 
-
-
-	
 }

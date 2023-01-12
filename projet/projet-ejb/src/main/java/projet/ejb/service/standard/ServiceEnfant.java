@@ -32,7 +32,7 @@ public class ServiceEnfant implements IServiceEnfant {
 	@Override
 	public int inserer(DtoEnfant dtoCompte) throws ExceptionValidation {
 
-		System.out.println(dtoCompte.toString());
+		System.out.println("testing id " + dtoCompte.getCompte().getId());
 		int id = daoCompte.inserer(mapper.mapEnfant(dtoCompte));
 		return id;
 	}

@@ -113,12 +113,12 @@ public class Enfant implements Serializable {
 		this.methodePayement = methodePayement;
 	}
 
-//	public Compte getCompte() {
-	// return compte;
-	// }
+	public Compte getCompte() {
+	 return compte;
+	 }
 
-	// public void setCompte(Compte compte) {
-	// this.compte = compte;
-	// }
+	 public void setCompte(Compte compte) {
+	 this.compte = compte;
+	 }
 
 }

@@ -21,9 +21,9 @@ public class Salle implements Serializable {
 	@Column(name = "idSalle")
 	private int idSalle;
 	private int nombreSalle;
-	@Column(name = "cours")
-	@OneToMany(mappedBy = "salle", cascade = CascadeType.ALL)
-	private List<Cours> cours;
+	//@Column(name = "cours")
+	//@OneToMany(mappedBy = "salle", cascade = CascadeType.ALL)
+	//private List<Cours> cours;
 	
 	public int getId() {
 		return idSalle;
@@ -41,11 +41,4 @@ public class Salle implements Serializable {
 		this.nombreSalle = nombreSalle;
 	}
 
-	public List<Cours> getCours() {
-		return cours;
-	}
-
-	public void setCours(List<Cours> cours) {
-		this.cours = cours;
-	}
 }

@@ -53,7 +53,7 @@ Prenom		VARCHAR(25) 	NOT NULL,
 DateDeNaissance	date	NOT NULL,
 NiveauEtude	VARCHAR(100)	NOT NULL,
 Creneau	VARCHAR(100)	,
-MethodePayement	VARCHAR(100) NOT NULL,
+MethodePayement	VARCHAR(100) ,
 FOREIGN KEY (IdCompte) REFERENCES compte (IdCompte),
 FOREIGN KEY (IdCours) REFERENCES cours (IdCours),
 PRIMARY KEY (IdEnfant)

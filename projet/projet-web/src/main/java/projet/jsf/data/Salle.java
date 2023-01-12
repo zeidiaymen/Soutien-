@@ -9,7 +9,7 @@ public class Salle implements Serializable {
 
 	private int id;
 	private int nombreSalle;
-	private List<Cours> cours;
+
 
 	public Salle() {
 		super();
@@ -38,17 +38,9 @@ public class Salle implements Serializable {
 		this.nombreSalle = nombreSalle;
 	}
 
-	public List<Cours> getCours() {
-		return cours;
-	}
-
-	public void setCours(List<Cours> cours) {
-		this.cours = cours;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(cours);
+		return Objects.hash(id, nombreSalle);
 	}
 
 	@Override
@@ -60,7 +52,10 @@ public class Salle implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Salle other = (Salle) obj;
-		return Objects.equals(cours, other.cours);
+		return id == other.id && nombreSalle == other.nombreSalle;
 	}
+
+
+
 
 }

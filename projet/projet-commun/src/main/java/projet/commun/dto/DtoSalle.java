@@ -8,7 +8,7 @@ public class DtoSalle implements Serializable{
 
 	private int id;
 	private int nombreSalle;
-	private List<DtoCours> cours;
+
 	
 	
 	public DtoSalle() {
@@ -16,11 +16,11 @@ public class DtoSalle implements Serializable{
 	}
 
 
-	public DtoSalle(int id, int nombreSalle, List<DtoCours> cours) {
+	public DtoSalle(int id, int nombreSalle) {
 		super();
 		this.id = id;
 		this.nombreSalle = nombreSalle;
-		this.cours = cours;
+
 	}
 
 
@@ -44,14 +44,6 @@ public class DtoSalle implements Serializable{
 	}
 
 
-	public List<DtoCours> getCours() {
-		return cours;
-	}
-
-
-	public void setCours(List<DtoCours> cours) {
-		this.cours = cours;
-	}
 	
 	
 	

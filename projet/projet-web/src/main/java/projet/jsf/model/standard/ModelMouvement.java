@@ -38,6 +38,8 @@ public class ModelMouvement implements Serializable {
 	@Inject
 	private IMapper mapper;
 
+	@Inject
+	private ModelCompte compte;
 	// Getters
 
 	public List<Mouvement> getListe() {
@@ -77,10 +79,14 @@ public class ModelMouvement implements Serializable {
 	public String validerMiseAJour() {
 		try {
 			if (courant.getId() == null) {
-				courant.setCompte(compteActif);
+				Compte p = compte.getListe().stream()
+						.filter((a) -> a.getPseudo().equals(compteActif.getIdConnectedUser())).findFirst().get();
+
+				courant.setCompte(p);
 
 				serviceMouvement.inserer(mapper.mapMouvement(courant));
 			} else {
+
 				courant.setCompte(compteActif);
 				serviceMouvement.modifier(mapper.mapMouvement(courant));
 			}
