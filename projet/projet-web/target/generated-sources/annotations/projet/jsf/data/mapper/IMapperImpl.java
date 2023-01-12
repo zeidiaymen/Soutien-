@@ -19,7 +19,7 @@ import projet.jsf.data.Salle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-01-09T23:14:11+0100",
+    date = "2023-01-12T08:36:14+0100",
     comments = "version: 1.5.3.Final, compiler: Eclipse JDT (IDE) 1.4.100.v20220318-0906, environment: Java 18.0.2 (Eclipse Adoptium)"
 )
 @ApplicationScoped
@@ -33,16 +33,16 @@ public class IMapperImpl implements IMapper {
 
         Compte compte = new Compte();
 
-        compte.setEmail( source.getEmail() );
         compte.setId( source.getId() );
-        compte.setMotDePasse( source.getMotDePasse() );
-        compte.setMouvements( dtoMouvementListToMouvementList( source.getMouvements() ) );
         compte.setPseudo( source.getPseudo() );
-        List<String> list1 = source.getRoles();
-        if ( list1 != null ) {
-            compte.setRoles( new ArrayList<String>( list1 ) );
+        compte.setMotDePasse( source.getMotDePasse() );
+        compte.setEmail( source.getEmail() );
+        List<String> list = source.getRoles();
+        if ( list != null ) {
+            compte.setRoles( new ArrayList<String>( list ) );
         }
         compte.setSolde( source.getSolde() );
+        compte.setMouvements( dtoMouvementListToMouvementList( source.getMouvements() ) );
 
         return compte;
     }
@@ -79,21 +79,21 @@ public class IMapperImpl implements IMapper {
 
         Compte compte = new Compte();
 
-        compte.setEmail( source.getEmail() );
         if ( source.getId() != null ) {
             compte.setId( source.getId() );
         }
-        compte.setMotDePasse( source.getMotDePasse() );
-        List<Mouvement> list = source.getMouvements();
-        if ( list != null ) {
-            compte.setMouvements( new ArrayList<Mouvement>( list ) );
-        }
         compte.setPseudo( source.getPseudo() );
-        List<String> list1 = source.getRoles();
-        if ( list1 != null ) {
-            compte.setRoles( new ArrayList<String>( list1 ) );
+        compte.setMotDePasse( source.getMotDePasse() );
+        compte.setEmail( source.getEmail() );
+        List<String> list = source.getRoles();
+        if ( list != null ) {
+            compte.setRoles( new ArrayList<String>( list ) );
         }
         compte.setSolde( source.getSolde() );
+        List<Mouvement> list1 = source.getMouvements();
+        if ( list1 != null ) {
+            compte.setMouvements( new ArrayList<Mouvement>( list1 ) );
+        }
 
         return compte;
     }
@@ -104,45 +104,45 @@ public class IMapperImpl implements IMapper {
             return target;
         }
 
-        target.setEmail( source.getEmail() );
         if ( source.getId() != null ) {
             target.setId( source.getId() );
         }
-        target.setMotDePasse( source.getMotDePasse() );
-        if ( target.getMouvements() != null ) {
-            List<Mouvement> list = source.getMouvements();
-            if ( list != null ) {
-                target.getMouvements().clear();
-                target.getMouvements().addAll( list );
-            }
-            else {
-                target.setMouvements( null );
-            }
-        }
-        else {
-            List<Mouvement> list = source.getMouvements();
-            if ( list != null ) {
-                target.setMouvements( new ArrayList<Mouvement>( list ) );
-            }
-        }
         target.setPseudo( source.getPseudo() );
+        target.setMotDePasse( source.getMotDePasse() );
+        target.setEmail( source.getEmail() );
         if ( target.getRoles() != null ) {
-            List<String> list1 = source.getRoles();
-            if ( list1 != null ) {
+            List<String> list = source.getRoles();
+            if ( list != null ) {
                 target.getRoles().clear();
-                target.getRoles().addAll( list1 );
+                target.getRoles().addAll( list );
             }
             else {
                 target.setRoles( null );
             }
         }
         else {
-            List<String> list1 = source.getRoles();
-            if ( list1 != null ) {
-                target.setRoles( new ArrayList<String>( list1 ) );
+            List<String> list = source.getRoles();
+            if ( list != null ) {
+                target.setRoles( new ArrayList<String>( list ) );
             }
         }
         target.setSolde( source.getSolde() );
+        if ( target.getMouvements() != null ) {
+            List<Mouvement> list1 = source.getMouvements();
+            if ( list1 != null ) {
+                target.getMouvements().clear();
+                target.getMouvements().addAll( list1 );
+            }
+            else {
+                target.setMouvements( null );
+            }
+        }
+        else {
+            List<Mouvement> list1 = source.getMouvements();
+            if ( list1 != null ) {
+                target.setMouvements( new ArrayList<Mouvement>( list1 ) );
+            }
+        }
 
         return target;
     }
@@ -155,15 +155,15 @@ public class IMapperImpl implements IMapper {
 
         Enfant enfant = new Enfant();
 
-        enfant.setCompte( map( source.getCompte() ) );
-        enfant.setCours( mapCours( source.getCours() ) );
-        enfant.setCreneau( source.getCreneau() );
-        enfant.setDateDeNaissance( source.getDateDeNaissance() );
         enfant.setId( source.getId() );
-        enfant.setMethodePayement( methodePayementToMethodePayement( source.getMethodePayement() ) );
-        enfant.setNiveauEtude( source.getNiveauEtude() );
         enfant.setNom( source.getNom() );
         enfant.setPrenom( source.getPrenom() );
+        enfant.setDateDeNaissance( source.getDateDeNaissance() );
+        enfant.setNiveauEtude( source.getNiveauEtude() );
+        enfant.setCreneau( source.getCreneau() );
+        enfant.setMethodePayement( methodePayementToMethodePayement( source.getMethodePayement() ) );
+        enfant.setCompte( map( source.getCompte() ) );
+        enfant.setCours( mapCours( source.getCours() ) );
 
         return enfant;
     }
@@ -199,15 +199,15 @@ public class IMapperImpl implements IMapper {
 
         Enfant enfant = new Enfant();
 
-        enfant.setCompte( duplicate( source.getCompte() ) );
-        enfant.setCours( duplicate( source.getCours() ) );
-        enfant.setCreneau( source.getCreneau() );
-        enfant.setDateDeNaissance( source.getDateDeNaissance() );
         enfant.setId( source.getId() );
-        enfant.setMethodePayement( source.getMethodePayement() );
-        enfant.setNiveauEtude( source.getNiveauEtude() );
         enfant.setNom( source.getNom() );
         enfant.setPrenom( source.getPrenom() );
+        enfant.setDateDeNaissance( source.getDateDeNaissance() );
+        enfant.setNiveauEtude( source.getNiveauEtude() );
+        enfant.setCreneau( source.getCreneau() );
+        enfant.setMethodePayement( source.getMethodePayement() );
+        enfant.setCompte( duplicate( source.getCompte() ) );
+        enfant.setCours( duplicate( source.getCours() ) );
 
         return enfant;
     }
@@ -220,9 +220,9 @@ public class IMapperImpl implements IMapper {
 
         Salle salle = new Salle();
 
-        salle.setCours( dtoCoursListToCoursList( source.getCours() ) );
         salle.setId( source.getId() );
         salle.setNombreSalle( source.getNombreSalle() );
+        salle.setCours( dtoCoursListToCoursList( source.getCours() ) );
 
         return salle;
     }
@@ -250,12 +250,12 @@ public class IMapperImpl implements IMapper {
 
         Salle salle = new Salle();
 
+        salle.setId( source.getId() );
+        salle.setNombreSalle( source.getNombreSalle() );
         List<Cours> list = source.getCours();
         if ( list != null ) {
             salle.setCours( new ArrayList<Cours>( list ) );
         }
-        salle.setId( source.getId() );
-        salle.setNombreSalle( source.getNombreSalle() );
 
         return salle;
     }
@@ -346,9 +346,9 @@ public class IMapperImpl implements IMapper {
 
         Mouvement mouvement = new Mouvement();
 
-        mouvement.setCompte( map( source.getCompte() ) );
         mouvement.setId( source.getId() );
         mouvement.setMontant( source.getMontant() );
+        mouvement.setCompte( map( source.getCompte() ) );
 
         return mouvement;
     }
@@ -361,11 +361,11 @@ public class IMapperImpl implements IMapper {
 
         Mouvement mouvement = new Mouvement();
 
-        mouvement.setCompte( duplicate( source.getCompte() ) );
         if ( source.getId() != null ) {
             mouvement.setId( source.getId() );
         }
         mouvement.setMontant( source.getMontant() );
+        mouvement.setCompte( duplicate( source.getCompte() ) );
 
         return mouvement;
     }
@@ -470,13 +470,13 @@ public class IMapperImpl implements IMapper {
         projet.commun.dto.Crenaux crenaux1;
 
         switch ( crenaux ) {
-            case APRESMIDI_DIMANCHE: crenaux1 = projet.commun.dto.Crenaux.APRESMIDI_DIMANCHE;
-            break;
-            case APRESMIDI_SAMEDI: crenaux1 = projet.commun.dto.Crenaux.APRESMIDI_SAMEDI;
-            break;
             case MATIN_DIMANCHE: crenaux1 = projet.commun.dto.Crenaux.MATIN_DIMANCHE;
             break;
+            case APRESMIDI_DIMANCHE: crenaux1 = projet.commun.dto.Crenaux.APRESMIDI_DIMANCHE;
+            break;
             case MATIN_SAMEDI: crenaux1 = projet.commun.dto.Crenaux.MATIN_SAMEDI;
+            break;
+            case APRESMIDI_SAMEDI: crenaux1 = projet.commun.dto.Crenaux.APRESMIDI_SAMEDI;
             break;
             default: throw new IllegalArgumentException( "Unexpected enum constant: " + crenaux );
         }

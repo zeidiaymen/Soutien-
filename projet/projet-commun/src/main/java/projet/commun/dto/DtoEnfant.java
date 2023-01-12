@@ -107,6 +107,13 @@ public class DtoEnfant implements Serializable {
 	public void setCours(DtoCours cours) {
 		this.cours = cours;
 	}
+
+	@Override
+	public String toString() {
+		return "DtoEnfant [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", dateDeNaissance=" + dateDeNaissance
+				+ ", niveauEtude=" + niveauEtude + ", creneau=" + creneau + ", methodePayement=" + methodePayement
+				+ ", compte=" + compte + ", cours=" + cours + "]";
+	}
 	
 	
 	

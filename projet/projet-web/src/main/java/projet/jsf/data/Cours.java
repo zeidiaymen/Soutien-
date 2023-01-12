@@ -10,7 +10,6 @@ public class Cours {
 	private String libelle;
 	private int capacite;
 	private Crenaux crenaux;
-
 	private Enfant enfant;
 	private Salle salle;
 

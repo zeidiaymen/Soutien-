@@ -33,7 +33,7 @@ public class CompteConverter implements Converter<Compte> {
 			}
 		}
 
-		var id = Integer.valueOf("x" + value);
+		var id = Integer.valueOf(value);
 		for (Compte item : items) {
 			if (item.getId().equals(id)) {
 				return item;

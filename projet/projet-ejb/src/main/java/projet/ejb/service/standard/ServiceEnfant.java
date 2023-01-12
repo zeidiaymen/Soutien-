@@ -32,6 +32,7 @@ public class ServiceEnfant implements IServiceEnfant {
 	@Override
 	public int inserer(DtoEnfant dtoCompte) throws ExceptionValidation {
 
+		System.out.println(dtoCompte.toString());
 		int id = daoCompte.inserer(mapper.mapEnfant(dtoCompte));
 		return id;
 	}

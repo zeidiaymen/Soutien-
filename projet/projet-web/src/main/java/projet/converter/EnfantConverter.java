@@ -33,7 +33,7 @@ public class EnfantConverter implements Converter<Enfant> {
 			}
 		}
 
-		var id = Integer.valueOf("x" + value);
+		var id = Integer.valueOf(value);
 		for (Enfant item : items) {
 			if (item.getId().equals(id)) {
 				return item;

@@ -37,9 +37,10 @@
 				</tr>
 				<tr>
 					<td><h:outputLabel for="date">Date de naissance :</h:outputLabel></td>
-					<td><h:inputText id="date" size="5" readonly="false"
-							value="#{modelEnfant.courant.dateDeNaissance}" /> <br /> <h:message
-							for="date" errorClass="error" /></td>
+					<td><h:inputText
+							value="#{modelEnfant.courant.dateDeNaissance}">
+							<f:convertDateTime pattern="MM/dd/yyyy" />
+						</h:inputText></td>
 				</tr>
 				<tr>
 					<td><h:outputLabel for="Niveau">Niveau d'etude :</h:outputLabel></td>
@@ -47,35 +48,22 @@
 							value="#{modelEnfant.courant.niveauEtude}" /> <br /> <h:message
 							for="Niveau" errorClass="error" /></td>
 				</tr>
+
 				<tr>
-					<td><h:outputLabel for="Creneau">Creneau :</h:outputLabel></td>
-					<td><h:inputText id="Creneau" size="5" readonly="false"
-							value="#{modelEnfant.courant.creneau}" /> <br /> <h:message
-							for="Creneau" errorClass="error" /></td>
-				</tr>
-				<tr>
-					<td><h:outputLabel for="Compte">Compte :</h:outputLabel></td>
-					<td><h:selectOneMenu id="Compte"
+					<td><h:outputLabel for="compte">Compte :</h:outputLabel></td>
+					<td><h:selectOneMenu id="compte"
 							value="#{modelEnfant.courant.compte}"
-							converter="#{CompteConverter}">
+							converter="#{compteConverter}">
 							<f:selectItems value="#{modelCompte.liste}" var="item"
-								itemLabel="#{item.pseudo}" />
-						</h:selectOneMenu> <br /> <h:message for="Cours" errorClass="error" /></td>
-				</tr>
-				<tr>
-					<td><h:outputLabel for="Cours">Cours :</h:outputLabel></td>
-					<td><h:selectOneMenu id="Cours"
-							value="#{modelEnfant.courant.cours}"
-							converter="#{CoursConverter}">
-							<f:selectItems value="#{modelCours.liste}" var="item"
 								itemLabel="#{item.id}" />
-						</h:selectOneMenu> <br /> <h:message for="Cours" errorClass="error" /></td>
+						</h:selectOneMenu> <br /> <h:message for="Compte" errorClass="error" /></td>
 				</tr>
+
 			</table>
 
 			<br />
 			<h:commandButton value="Valider"
-				action="#{modelCours.validerMiseAJour()}" />
+				action="#{modelEnfant.validerMiseAJour()}" />
 
 			<h:button value="Retour" outcome="comptes" />
 		</h:form>

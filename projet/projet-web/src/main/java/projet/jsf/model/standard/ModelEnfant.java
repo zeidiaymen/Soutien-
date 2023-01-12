@@ -20,81 +20,81 @@ import projet.jsf.util.UtilJsf;
 @Named
 @ViewScoped
 public class ModelEnfant implements Serializable {
-	
-	// Champs
-	
-	private List<Enfant>	liste;
-	
-	private Enfant			courant;
-	
-	@EJB
-	private IServiceEnfant	serviceCompte;
-	
-	@Inject
-	private IMapper			mapper;
 
-	
-	// Getters 
-	
+	// Champs
+
+	private List<Enfant> liste;
+
+	private Enfant courant;
+
+	@EJB
+	private IServiceEnfant serviceCompte;
+
+	@Inject
+	private IMapper mapper;
+
+	// Getters
+
 	public List<Enfant> getListe() {
-		if ( liste == null ) {
+		if (liste == null) {
 			liste = new ArrayList<>();
-			for ( DtoEnfant dto : serviceCompte.listerTout() ) {
-				liste.add( mapper.mapEnfant( dto ) );
+			for (DtoEnfant dto : serviceCompte.listerTout()) {
+				liste.add(mapper.mapEnfant(dto));
 			}
 		}
 		return liste;
 	}
-	
-		public Enfant getCourant() {
-			if ( courant == null ) {
-				courant = new Enfant();
-			}
-			return courant;
+
+	public Enfant getCourant() {
+		if (courant == null) {
+			courant = new Enfant();
 		}
-	
-	
+		return courant;
+	}
+
 	// Initialisaitons
-	
+
 	public String actualiserCourant() {
-		if ( courant != null ) {
-			DtoEnfant dto = serviceCompte.retrouver( courant.getId() ); 
-			if ( dto == null ) {
-				UtilJsf.messageError( "L'enfant demandé n'existe pas" );
+		if (courant != null) {
+			DtoEnfant dto = serviceCompte.retrouver(courant.getId());
+			if (dto == null) {
+				UtilJsf.messageError("L'enfant demandé n'existe pas");
 				return "test/liste";
 			} else {
-				courant = mapper.mapEnfant( dto );
+				courant = mapper.mapEnfant(dto);
 			}
 		}
 		return null;
 	}
-	
-	
+
 	// Actions
-	
+
 	public String validerMiseAJour() {
 		try {
-			if ( courant == null) {
-				serviceCompte.inserer( mapper.mapEnfant(courant) );
+			if (courant.getId() == null) {
+				
+				 serviceCompte.inserer( mapper.mapEnfant(courant) );
 			} else {
-				serviceCompte.modifier( mapper.mapEnfant(courant) );
-			}
-			UtilJsf.messageInfo( "Mise à jour effectuée avec succès." );
-			return "liste";
 			
-		} catch (ExceptionValidation e) {
+
+				 serviceCompte.modifier( mapper.mapEnfant(courant) );
+			}
+			UtilJsf.messageInfo("Mise à jour effectuée avec succès.");
+			return "liste";
+		
+		} catch (Exception e) {
 			UtilJsf.messageError(e);
 			return null;
 		}
 	}
-	
-	public String supprimer( Enfant item ) {
+
+	public String supprimer(Enfant item) {
 		try {
-			serviceCompte.supprimer( item.getId() );
+			serviceCompte.supprimer(item.getId());
 			liste.remove(item);
-			UtilJsf.messageInfo( "Suppression effectuée avec succès." );
+			UtilJsf.messageInfo("Suppression effectuée avec succès.");
 		} catch (ExceptionValidation e) {
-			UtilJsf.messageError( e ); 
+			UtilJsf.messageError(e);
 		}
 		return null;
 	}

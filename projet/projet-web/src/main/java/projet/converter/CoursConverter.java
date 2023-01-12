@@ -33,7 +33,7 @@ public class CoursConverter implements Converter<Cours> {
 			}
 		}
 
-		var id = Integer.valueOf("x" + value);
+		var id = Integer.valueOf( value);
 		for (Cours item : items) {
 			if (item.getId().equals(id)) {
 				return item;

@@ -33,7 +33,7 @@ public class SalleConverter implements Converter<Salle> {
 			}
 		}
 
-		var id = Integer.valueOf("x" + value);
+		var id = Integer.valueOf(value);
 		for (Salle item : items) {
 			if (item.getId() == id) {
 				return item;

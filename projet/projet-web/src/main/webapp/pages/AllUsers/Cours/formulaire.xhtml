@@ -49,20 +49,12 @@
 							for="email" errorClass="error" /></td>
 				</tr>
 
-				<tr>
-					<td><h:outputLabel for="enfant">Enfants :</h:outputLabel></td>
-					<td><h:selectOneMenu id="enfant"
-							value="#{modelCours.courant.enfant}"
-							converter="#{EnfantConverter}">
-							<f:selectItems value="#{modelEnfant.liste}" var="item"
-								itemLabel="#{item.id}" />
-						</h:selectOneMenu> <br /> <h:message for="enfant" errorClass="error" /></td>
-				</tr>
+
 
 				<tr>
 					<td><h:outputLabel for="salle">Salles :</h:outputLabel></td>
 					<td><h:selectOneMenu id="salle"
-							value="#{modelCours.courant.salle}" converter="#{SalleConverter}">
+							value="#{modelCours.courant.salle}" converter="#{salleConverter}">
 							<f:selectItems value="#{modelSalle.liste}" var="item"
 								itemLabel="#{item.id}" />
 						</h:selectOneMenu> <br /> <h:message for="salle" errorClass="error" /></td>
