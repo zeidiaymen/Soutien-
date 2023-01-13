@@ -46,8 +46,26 @@
 							#{item.crenaux}			
 				</h:column>
 				<h:column>
-					<h:button value="Affecter cours" outcome="formulaire1" />
+					<!-- <h:button value="Affecter cours" outcome="formulaire1" /> -->
+					<h:button outcome="formulaire1?id=#{item.id}"
+						title="Affecter cours" />
 				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Actions" />
+					</f:facet>
+					<h:button outcome="formulaire?id=#{item.id}"
+						image="#{ resource['images:modifier.png'] }" title="Modifier"
+						styleClass="image-action" />
+					<h:commandButton action="#{modelCours.supprimer(item)}"
+						value="Supprimer"
+						onclick="return confirm('Confirmez-vous la suppression ?')"
+						image="#{ resource['images:supprimer.png'] }" title="Supprimer"
+						styleClass="image-action">
+						<f:ajax render="@form" execute="@form" />
+					</h:commandButton>
+				</h:column>
+
 
 
 			</h:dataTable>

@@ -19,7 +19,7 @@ import projet.jsf.data.Salle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-01-13T11:59:28+0100",
+    date = "2023-01-13T17:55:10+0100",
     comments = "version: 1.5.3.Final, compiler: Eclipse JDT (IDE) 1.4.100.v20220318-0906, environment: Java 18.0.2 (Eclipse Adoptium)"
 )
 @ApplicationScoped
@@ -155,15 +155,15 @@ public class IMapperImpl implements IMapper {
 
         Enfant enfant = new Enfant();
 
-        enfant.setId( source.getId() );
-        enfant.setNom( source.getNom() );
-        enfant.setPrenom( source.getPrenom() );
-        enfant.setDateDeNaissance( source.getDateDeNaissance() );
-        enfant.setNiveauEtude( source.getNiveauEtude() );
-        enfant.setCreneau( source.getCreneau() );
-        enfant.setMethodePayement( methodePayementToMethodePayement( source.getMethodePayement() ) );
         enfant.setCompte( map( source.getCompte() ) );
         enfant.setCours( mapCours( source.getCours() ) );
+        enfant.setCreneau( source.getCreneau() );
+        enfant.setDateDeNaissance( source.getDateDeNaissance() );
+        enfant.setId( source.getId() );
+        enfant.setMethodePayement( methodePayementToMethodePayement( source.getMethodePayement() ) );
+        enfant.setNiveauEtude( source.getNiveauEtude() );
+        enfant.setNom( source.getNom() );
+        enfant.setPrenom( source.getPrenom() );
 
         return enfant;
     }
@@ -248,12 +248,12 @@ public class IMapperImpl implements IMapper {
 
         Cours cours = new Cours();
 
-        cours.setId( source.getId() );
-        cours.setPrix( source.getPrix() );
-        cours.setLibelle( source.getLibelle() );
         cours.setCapacite( source.getCapacite() );
         cours.setCrenaux( crenauxToCrenaux1( source.getCrenaux() ) );
         cours.setEnfant( mapEnfant( source.getEnfant() ) );
+        cours.setId( source.getId() );
+        cours.setLibelle( source.getLibelle() );
+        cours.setPrix( source.getPrix() );
         cours.setSalle( mapSalle( source.getSalle() ) );
 
         return cours;
@@ -284,9 +284,9 @@ public class IMapperImpl implements IMapper {
 
         Mouvement mouvement = new Mouvement();
 
+        mouvement.setCompte( map( source.getCompte() ) );
         mouvement.setId( source.getId() );
         mouvement.setMontant( source.getMontant() );
-        mouvement.setCompte( map( source.getCompte() ) );
 
         return mouvement;
     }
@@ -365,13 +365,13 @@ public class IMapperImpl implements IMapper {
         projet.commun.dto.Crenaux crenaux1;
 
         switch ( crenaux ) {
-            case MATIN_DIMANCHE: crenaux1 = projet.commun.dto.Crenaux.MATIN_DIMANCHE;
-            break;
             case APRESMIDI_DIMANCHE: crenaux1 = projet.commun.dto.Crenaux.APRESMIDI_DIMANCHE;
             break;
-            case MATIN_SAMEDI: crenaux1 = projet.commun.dto.Crenaux.MATIN_SAMEDI;
-            break;
             case APRESMIDI_SAMEDI: crenaux1 = projet.commun.dto.Crenaux.APRESMIDI_SAMEDI;
+            break;
+            case MATIN_DIMANCHE: crenaux1 = projet.commun.dto.Crenaux.MATIN_DIMANCHE;
+            break;
+            case MATIN_SAMEDI: crenaux1 = projet.commun.dto.Crenaux.MATIN_SAMEDI;
             break;
             default: throw new IllegalArgumentException( "Unexpected enum constant: " + crenaux );
         }
