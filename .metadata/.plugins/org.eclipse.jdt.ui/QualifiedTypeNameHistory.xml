@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="projet.commun.dto.DtoEnfant"/>
+    <fullyQualifiedTypeName name="projet.commun.dto.DtoSalle"/>
+    <fullyQualifiedTypeName name="projet.commun.dto.DtoMouvement"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="projet.commun.dto.DtoCompte"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="projet.commun.dto.DtoCours"/>
+    <fullyQualifiedTypeName name="projet.jsf.data.Cours"/>
+    <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
+    <fullyQualifiedTypeName name="projet.jsf.data.Mouvement"/>
+</qualifiedTypeNameHistroy>

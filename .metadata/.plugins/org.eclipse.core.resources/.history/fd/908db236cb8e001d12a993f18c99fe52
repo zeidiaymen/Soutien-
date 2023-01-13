@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/page-standard.xhtml">
+
+	<ui:define name="titre">Liste des cours</ui:define>
+
+	<ui:define name="contenu">
+
+		<h:form>
+
+			<h:dataTable styleClass="liste" value="#{modelCours.liste}"
+				var="item" rowClasses="impair, pair"
+				columnClasses="left,left,center">
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="id" />
+					</f:facet>
+							#{item.id}			
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="prix" />
+					</f:facet>
+							#{item.prix}			
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="libelle" />
+					</f:facet>
+							#{item.libelle}			
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="capacite" />
+					</f:facet>
+							#{item.capacite}			
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="crenaux" />
+					</f:facet>
+							#{item.crenaux}			
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="enfant" />
+					</f:facet>
+							#{item.enfant.nom}			
+				</h:column>
+
+			</h:dataTable>
+
+			<br />
+			<h:button value="Ajouter" outcome="formulaire" />
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
