@@ -1,0 +1,74 @@
+package projet.jsf.data;
+
+import java.io.Serializable;
+import java.util.Objects;
+
+@SuppressWarnings("serial")
+public class Mouvement implements Serializable {
+
+	private Integer id;
+	private double montant;
+	private Compte compte;
+
+	public Mouvement() {
+		super();
+	}
+
+	public Mouvement(int id, double montant, Compte compte) {
+		super();
+		this.id = id;
+		this.montant = montant;
+		this.compte = compte;
+	}
+
+
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public double getMontant() {
+		return montant;
+	}
+
+	public void setMontant(double montant) {
+		this.montant = montant;
+	}
+
+	public Compte getCompte() {
+		return compte;
+	}
+
+	public void setCompte(Compte compte) {
+		this.compte = compte;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(compte, id, montant);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Mouvement other = (Mouvement) obj;
+		return Objects.equals(compte, other.compte) && Objects.equals(id, other.id)
+				&& Double.doubleToLongBits(montant) == Double.doubleToLongBits(other.montant);
+	}
+
+	@Override
+	public String toString() {
+		return "Mouvement [id=" + id + ", montant=" + montant + ", compte=" + compte + "]";
+	}
+	
+
+}
