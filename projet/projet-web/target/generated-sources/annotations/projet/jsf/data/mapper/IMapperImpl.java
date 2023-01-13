@@ -19,7 +19,7 @@ import projet.jsf.data.Salle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-01-13T11:59:28+0100",
+    date = "2023-01-13T13:46:02+0100",
     comments = "version: 1.5.3.Final, compiler: Eclipse JDT (IDE) 1.4.100.v20220318-0906, environment: Java 18.0.2 (Eclipse Adoptium)"
 )
 @ApplicationScoped
@@ -33,16 +33,16 @@ public class IMapperImpl implements IMapper {
 
         Compte compte = new Compte();
 
-        compte.setId( source.getId() );
-        compte.setPseudo( source.getPseudo() );
-        compte.setMotDePasse( source.getMotDePasse() );
         compte.setEmail( source.getEmail() );
-        List<String> list = source.getRoles();
-        if ( list != null ) {
-            compte.setRoles( new ArrayList<String>( list ) );
+        compte.setId( source.getId() );
+        compte.setMotDePasse( source.getMotDePasse() );
+        compte.setMouvements( dtoMouvementListToMouvementList( source.getMouvements() ) );
+        compte.setPseudo( source.getPseudo() );
+        List<String> list1 = source.getRoles();
+        if ( list1 != null ) {
+            compte.setRoles( new ArrayList<String>( list1 ) );
         }
         compte.setSolde( source.getSolde() );
-        compte.setMouvements( dtoMouvementListToMouvementList( source.getMouvements() ) );
 
         return compte;
     }
@@ -79,21 +79,21 @@ public class IMapperImpl implements IMapper {
 
         Compte compte = new Compte();
 
+        compte.setEmail( source.getEmail() );
         if ( source.getId() != null ) {
             compte.setId( source.getId() );
         }
-        compte.setPseudo( source.getPseudo() );
         compte.setMotDePasse( source.getMotDePasse() );
-        compte.setEmail( source.getEmail() );
-        List<String> list = source.getRoles();
+        List<Mouvement> list = source.getMouvements();
         if ( list != null ) {
-            compte.setRoles( new ArrayList<String>( list ) );
+            compte.setMouvements( new ArrayList<Mouvement>( list ) );
+        }
+        compte.setPseudo( source.getPseudo() );
+        List<String> list1 = source.getRoles();
+        if ( list1 != null ) {
+            compte.setRoles( new ArrayList<String>( list1 ) );
         }
         compte.setSolde( source.getSolde() );
-        List<Mouvement> list1 = source.getMouvements();
-        if ( list1 != null ) {
-            compte.setMouvements( new ArrayList<Mouvement>( list1 ) );
-        }
 
         return compte;
     }
@@ -104,45 +104,45 @@ public class IMapperImpl implements IMapper {
             return target;
         }
 
+        target.setEmail( source.getEmail() );
         if ( source.getId() != null ) {
             target.setId( source.getId() );
         }
-        target.setPseudo( source.getPseudo() );
         target.setMotDePasse( source.getMotDePasse() );
-        target.setEmail( source.getEmail() );
-        if ( target.getRoles() != null ) {
-            List<String> list = source.getRoles();
-            if ( list != null ) {
-                target.getRoles().clear();
-                target.getRoles().addAll( list );
-            }
-            else {
-                target.setRoles( null );
-            }
-        }
-        else {
-            List<String> list = source.getRoles();
-            if ( list != null ) {
-                target.setRoles( new ArrayList<String>( list ) );
-            }
-        }
-        target.setSolde( source.getSolde() );
         if ( target.getMouvements() != null ) {
-            List<Mouvement> list1 = source.getMouvements();
-            if ( list1 != null ) {
+            List<Mouvement> list = source.getMouvements();
+            if ( list != null ) {
                 target.getMouvements().clear();
-                target.getMouvements().addAll( list1 );
+                target.getMouvements().addAll( list );
             }
             else {
                 target.setMouvements( null );
             }
         }
         else {
-            List<Mouvement> list1 = source.getMouvements();
-            if ( list1 != null ) {
-                target.setMouvements( new ArrayList<Mouvement>( list1 ) );
+            List<Mouvement> list = source.getMouvements();
+            if ( list != null ) {
+                target.setMouvements( new ArrayList<Mouvement>( list ) );
             }
         }
+        target.setPseudo( source.getPseudo() );
+        if ( target.getRoles() != null ) {
+            List<String> list1 = source.getRoles();
+            if ( list1 != null ) {
+                target.getRoles().clear();
+                target.getRoles().addAll( list1 );
+            }
+            else {
+                target.setRoles( null );
+            }
+        }
+        else {
+            List<String> list1 = source.getRoles();
+            if ( list1 != null ) {
+                target.setRoles( new ArrayList<String>( list1 ) );
+            }
+        }
+        target.setSolde( source.getSolde() );
 
         return target;
     }
@@ -248,12 +248,12 @@ public class IMapperImpl implements IMapper {
 
         Cours cours = new Cours();
 
-        cours.setId( source.getId() );
-        cours.setPrix( source.getPrix() );
-        cours.setLibelle( source.getLibelle() );
         cours.setCapacite( source.getCapacite() );
         cours.setCrenaux( crenauxToCrenaux1( source.getCrenaux() ) );
         cours.setEnfant( mapEnfant( source.getEnfant() ) );
+        cours.setId( source.getId() );
+        cours.setLibelle( source.getLibelle() );
+        cours.setPrix( source.getPrix() );
         cours.setSalle( mapSalle( source.getSalle() ) );
 
         return cours;
@@ -284,9 +284,9 @@ public class IMapperImpl implements IMapper {
 
         Mouvement mouvement = new Mouvement();
 
+        mouvement.setCompte( map( source.getCompte() ) );
         mouvement.setId( source.getId() );
         mouvement.setMontant( source.getMontant() );
-        mouvement.setCompte( map( source.getCompte() ) );
 
         return mouvement;
     }
@@ -365,13 +365,13 @@ public class IMapperImpl implements IMapper {
         projet.commun.dto.Crenaux crenaux1;
 
         switch ( crenaux ) {
-            case MATIN_DIMANCHE: crenaux1 = projet.commun.dto.Crenaux.MATIN_DIMANCHE;
-            break;
             case APRESMIDI_DIMANCHE: crenaux1 = projet.commun.dto.Crenaux.APRESMIDI_DIMANCHE;
             break;
-            case MATIN_SAMEDI: crenaux1 = projet.commun.dto.Crenaux.MATIN_SAMEDI;
-            break;
             case APRESMIDI_SAMEDI: crenaux1 = projet.commun.dto.Crenaux.APRESMIDI_SAMEDI;
+            break;
+            case MATIN_DIMANCHE: crenaux1 = projet.commun.dto.Crenaux.MATIN_DIMANCHE;
+            break;
+            case MATIN_SAMEDI: crenaux1 = projet.commun.dto.Crenaux.MATIN_SAMEDI;
             break;
             default: throw new IllegalArgumentException( "Unexpected enum constant: " + crenaux );
         }

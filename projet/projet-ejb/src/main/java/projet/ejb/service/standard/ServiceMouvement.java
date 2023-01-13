@@ -32,7 +32,7 @@ public class ServiceMouvement implements IServiceMouvement {
 	@Override
 	public int inserer(DtoMouvement DtoMouvement) throws ExceptionValidation {
 
-		int id = daoMouvement.inserer(mapper.mapMouvement(DtoMouvement));
+		int id = daoMouvement.inserer(DtoMouvement.getCompte().getId() ,mapper.mapMouvement(DtoMouvement));
 		return id;
 	}
 

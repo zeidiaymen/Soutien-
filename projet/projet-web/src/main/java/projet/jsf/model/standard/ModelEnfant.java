@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import projet.commun.dto.DtoEnfant;
+import projet.commun.dto.MethodePayement;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceEnfant;
 import projet.jsf.data.Enfant;
@@ -28,8 +28,10 @@ public class ModelEnfant implements Serializable {
 		this.courant = courant;
 	}
 
+	private Enfant temp;
 	private List<Enfant> liste;
-	private String id ;
+	private String id;
+	private String methode;
 	private Enfant courant;
 
 	@EJB
@@ -96,8 +98,8 @@ public class ModelEnfant implements Serializable {
 
 	public String validerAffectation() {
 		try {
-			System.out.println("mon id " + id);
-			//serviceCompte.affecterEnfant(5, model.getCourant().getId(), MethodePayement.ESPECE);
+			serviceCompte.affecterEnfant(Integer.parseInt(temp.toString().substring(11, 12)),
+					model.getCourant().getId(), MethodePayement.valueOf(methode));
 			return "liste";
 		} catch (Exception e) {
 			UtilJsf.messageError(e);
@@ -122,5 +124,21 @@ public class ModelEnfant implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public Enfant getTemp() {
+		return temp;
+	}
+
+	public void setTemp(Enfant temp) {
+		this.temp = temp;
+	}
+
+	public String getMethode() {
+		return methode;
+	}
+
+	public void setMethode(String methode) {
+		this.methode = methode;
 	}
 }

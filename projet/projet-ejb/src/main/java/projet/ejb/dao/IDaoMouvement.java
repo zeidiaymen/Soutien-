@@ -6,7 +6,7 @@ import projet.ejb.data.Mouvement;
 
 public interface IDaoMouvement {
 
-	int inserer(Mouvement mvt);
+	int inserer(int idMvt ,Mouvement mvt);
 
 	void modifier(Mouvement mvt);
 
@@ -15,5 +15,4 @@ public interface IDaoMouvement {
 	Mouvement retrouver(int idMvt);
 
 	List<Mouvement> listerTout();
-
 }

@@ -2,6 +2,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/template/page-standard.xhtml">
 
@@ -45,16 +46,21 @@
 					</f:facet>
 							#{item.crenaux}			
 				</h:column>
-				<h:column>
-					<h:button value="Affecter cours" outcome="formulaire1" />
-				</h:column>
+				<c:if test="#{compteActif.admininstrateur == false}">
 
+					<h:column>
+						<h:button value="Affecter cours"
+							outcome="formulaire1?id=#{item.id}" />
+					</h:column>
+				</c:if>
 
 			</h:dataTable>
 
 			<br />
-			<h:button value="Ajouter" outcome="formulaire" />
+			<c:if test="#{compteActif.admininstrateur }">
 
+				<h:button value="Ajouter" outcome="formulaire" />
+			</c:if>
 		</h:form>
 
 	</ui:define>

@@ -6,8 +6,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">>
 
 	 <f:metadata>
-		<f:viewParam name="id" value="#{modelEnfant.id}" />
-		<f:viewAction action="#{modelEnfant.actualiserCourant()}" />
+		<f:viewParam name="id" value="#{modelCours.courant.id}" />
+		<f:viewAction action="#{modelCours.actualiserCourant()}" />
 	</f:metadata>
 
 	<ui:define name="titre">Affectation Cours</ui:define>
@@ -19,11 +19,21 @@
 			<table class="form">
 				<tr>
 					<td><h:outputLabel for="methode">MethodePayement :</h:outputLabel></td>
-					<td><h:inputText id="methodePayement" size="5" 
-							value="#{modelEnfant.courant.methodePayement}" /> <br /> <h:message for="id"
-							errorClass="error" /></td>
+					<td><h:inputText id="methodePayement" size="5"
+							value="#{modelEnfant.methode}" /> <br /> <h:message
+							for="id" errorClass="error" /></td>
 				</tr>
-			
+
+				
+				<tr>
+					<td><h:outputLabel for="enfant">Enfant :</h:outputLabel></td>
+					<td><h:selectOneMenu id="enfant" value="#{modelEnfant.temp}"
+					converter="#{enfantConverter}"
+					>
+							<f:selectItems value="#{modelEnfant.liste}" var="item"
+								itemLabel="#{item.nom}" />
+						</h:selectOneMenu> <br /> <h:message for="salle" errorClass="error" /></td>
+				</tr>
 
 
 			</table>

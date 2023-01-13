@@ -71,8 +71,8 @@ public class DaoEnfant implements IDaoEnfant {
 	public boolean affecterCours(int idEnfant, int idCours, MethodePayement methode) {
 		Cours c = daoCours.retrouver(idCours);
 		Enfant e = retrouver(idEnfant);
-		c.setCapacite(c.getCapacite() - 1);
 		if (c.getCapacite() > 0) {
+			c.setCapacite(c.getCapacite() - 1);
 			daoCours.modifier(c);
 			e.setCours(c);
 			e.setCreneau(c.getCrenaux().toString());
