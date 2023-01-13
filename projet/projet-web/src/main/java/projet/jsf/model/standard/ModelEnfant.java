@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -23,8 +24,12 @@ public class ModelEnfant implements Serializable {
 
 	// Champs
 
-	private List<Enfant> liste;
+	public void setCourant(Enfant courant) {
+		this.courant = courant;
+	}
 
+	private List<Enfant> liste;
+	private String id ;
 	private Enfant courant;
 
 	@EJB
@@ -33,6 +38,8 @@ public class ModelEnfant implements Serializable {
 	@Inject
 	private IMapper mapper;
 
+	@Inject
+	private ModelCours model;
 	// Getters
 
 	public List<Enfant> getListe() {
@@ -72,16 +79,26 @@ public class ModelEnfant implements Serializable {
 	public String validerMiseAJour() {
 		try {
 			if (courant.getId() == null) {
-				
-				 serviceCompte.inserer( mapper.mapEnfant(courant) );
-			} else {
-			
 
-				 serviceCompte.modifier( mapper.mapEnfant(courant) );
+				serviceCompte.inserer(mapper.mapEnfant(courant));
+			} else {
+
+				serviceCompte.modifier(mapper.mapEnfant(courant));
 			}
 			UtilJsf.messageInfo("Mise à jour effectuée avec succès.");
 			return "liste";
-		
+
+		} catch (Exception e) {
+			UtilJsf.messageError(e);
+			return null;
+		}
+	}
+
+	public String validerAffectation() {
+		try {
+			System.out.println("mon id " + id);
+			//serviceCompte.affecterEnfant(5, model.getCourant().getId(), MethodePayement.ESPECE);
+			return "liste";
 		} catch (Exception e) {
 			UtilJsf.messageError(e);
 			return null;
@@ -97,5 +114,13 @@ public class ModelEnfant implements Serializable {
 			UtilJsf.messageError(e);
 		}
 		return null;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 }

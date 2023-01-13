@@ -8,11 +8,17 @@ import java.util.List;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import projet.ejb.dao.IDaoCompte;
+import projet.ejb.dao.IDaoCours;
 import projet.ejb.dao.IDaoEnfant;
+import projet.ejb.data.Compte;
+import projet.ejb.data.Cours;
 import projet.ejb.data.Enfant;
+import projet.ejb.data.MethodePayement;
 
 @Stateless
 @Local
@@ -23,8 +29,10 @@ public class DaoEnfant implements IDaoEnfant {
 
 	@PersistenceContext
 	private EntityManager em;
-
-	// Actions
+	@Inject
+	private IDaoCours daoCours;
+	@Inject
+	private IDaoCompte daoCompte;
 
 	@Override
 	public int inserer(Enfant enfant) {
@@ -57,6 +65,27 @@ public class DaoEnfant implements IDaoEnfant {
 		var jpql = "SELECT c FROM Enfant c ORDER BY c.nom";
 		var query = em.createQuery(jpql, Enfant.class);
 		return query.getResultList();
+	}
+
+	@Override
+	public boolean affecterCours(int idEnfant, int idCours, MethodePayement methode) {
+		Cours c = daoCours.retrouver(idCours);
+		Enfant e = retrouver(idEnfant);
+		c.setCapacite(c.getCapacite() - 1);
+		if (c.getCapacite() > 0) {
+			daoCours.modifier(c);
+			e.setCours(c);
+			e.setCreneau(c.getCrenaux().toString());
+			Compte parent = e.getCompte();
+			parent.setSolde(parent.getSolde() + c.getPrix());
+			e.setMethodePayement(methode);
+			daoCompte.modifier(parent);
+			modifier(e);
+			return true;
+		}
+
+		return false;
+
 	}
 
 }
