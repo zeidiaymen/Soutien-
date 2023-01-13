@@ -11,6 +11,7 @@ import javax.ejb.TransactionAttribute;
 import javax.inject.Inject;
 
 import projet.commun.dto.DtoEnfant;
+import projet.commun.dto.MethodePayement;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceEnfant;
 import projet.ejb.dao.IDaoEnfant;
@@ -63,6 +64,13 @@ public class ServiceEnfant implements IServiceEnfant {
 			liste.add(mapper.mapEnfant(compte));
 		}
 		return liste;
+	}
+
+	@Override
+	public boolean affecterEnfant(int idEnfant, int idCours, MethodePayement methode) {
+		// TODO Auto-generated method stub
+
+		return daoCompte.affecterCours(idEnfant, idCours, projet.ejb.data.MethodePayement.valueOf(methode.toString()));
 	}
 
 }

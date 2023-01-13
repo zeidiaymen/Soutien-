@@ -19,7 +19,7 @@ import projet.ejb.data.Salle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-01-12T09:37:11+0100",
+    date = "2023-01-13T12:10:16+0100",
     comments = "version: 1.5.3.Final, compiler: Eclipse JDT (IDE) 1.4.100.v20220318-0906, environment: Java 18.0.2 (Eclipse Adoptium)"
 )
 @ApplicationScoped
@@ -76,6 +76,7 @@ public class IMapperEjbImpl implements IMapperEjb {
         Enfant enfant = new Enfant();
 
         enfant.setCompte( map( source.getCompte() ) );
+        enfant.setCours( mapCours( source.getCours() ) );
         enfant.setCreneau( source.getCreneau() );
         enfant.setDateDeNaissance( source.getDateDeNaissance() );
         enfant.setId( source.getId() );
@@ -96,6 +97,7 @@ public class IMapperEjbImpl implements IMapperEjb {
         DtoEnfant dtoEnfant = new DtoEnfant();
 
         dtoEnfant.setCompte( map( source.getCompte() ) );
+        dtoEnfant.setCours( mapCours( source.getCours() ) );
         dtoEnfant.setCreneau( source.getCreneau() );
         dtoEnfant.setDateDeNaissance( source.getDateDeNaissance() );
         dtoEnfant.setId( source.getId() );
@@ -133,11 +135,11 @@ public class IMapperEjbImpl implements IMapperEjb {
 
         Cours cours = new Cours();
 
-        cours.setCapacite( source.getCapacite() );
         cours.setCrenaux( crenauxToCrenaux1( source.getCrenaux() ) );
-        cours.setId( source.getId() );
-        cours.setLibelle( source.getLibelle() );
         cours.setPrix( source.getPrix() );
+        cours.setLibelle( source.getLibelle() );
+        cours.setCapacite( source.getCapacite() );
+        cours.setId( source.getId() );
         cours.setSalle( mapSalle( source.getSalle() ) );
 
         return cours;

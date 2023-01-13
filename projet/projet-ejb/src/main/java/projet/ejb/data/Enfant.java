@@ -40,6 +40,14 @@ public class Enfant implements Serializable {
 	@JoinColumn(name = "idCours")
 	private Cours cours;
 
+	public Cours getCours() {
+		return cours;
+	}
+
+	public void setCours(Cours cours) {
+		this.cours = cours;
+	}
+
 	public Enfant() {
 		super();
 	}
