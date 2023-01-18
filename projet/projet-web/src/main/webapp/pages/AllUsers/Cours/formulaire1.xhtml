@@ -18,6 +18,7 @@
 
 			<table class="form">
 				<tr>
+<<<<<<< HEAD
 					<td><h:outputLabel for="methode">MethodePayement :</h:outputLabel></td>
 					<td><h:inputText id="methodePayement" size="5"
 							value="#{modelEnfant.methode}" /> <br /> <h:message
@@ -34,6 +35,20 @@
 								itemLabel="#{item.nom}" />
 						</h:selectOneMenu> <br /> <h:message for="salle" errorClass="error" /></td>
 				</tr>
+=======
+					<td><h:outputLabel for="id">Id :</h:outputLabel></td>
+					<td><h:inputText id="id" size="5" readonly="true"
+							value="#{modelCours.courant.id}" /> <br /> <h:message for="id"
+							errorClass="error" /></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="methode">MethodePayement :</h:outputLabel></td>
+					<td><h:inputText id="methodePayement" size="5"
+							value="#{modelEnfant.courant.methodePayement}" /> <br /> <h:message
+							for="id" errorClass="error" /></td>
+				</tr>
+
+>>>>>>> 305e1bc962406953521ad5d8014aa65228c9b9c7
 
 
 			</table>

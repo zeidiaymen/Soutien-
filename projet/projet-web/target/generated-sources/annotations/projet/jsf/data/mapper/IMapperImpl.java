@@ -19,7 +19,11 @@ import projet.jsf.data.Salle;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
+<<<<<<< HEAD
     date = "2023-01-13T13:46:02+0100",
+=======
+    date = "2023-01-13T17:55:10+0100",
+>>>>>>> 305e1bc962406953521ad5d8014aa65228c9b9c7
     comments = "version: 1.5.3.Final, compiler: Eclipse JDT (IDE) 1.4.100.v20220318-0906, environment: Java 18.0.2 (Eclipse Adoptium)"
 )
 @ApplicationScoped
@@ -155,15 +159,15 @@ public class IMapperImpl implements IMapper {
 
         Enfant enfant = new Enfant();
 
-        enfant.setId( source.getId() );
-        enfant.setNom( source.getNom() );
-        enfant.setPrenom( source.getPrenom() );
-        enfant.setDateDeNaissance( source.getDateDeNaissance() );
-        enfant.setNiveauEtude( source.getNiveauEtude() );
-        enfant.setCreneau( source.getCreneau() );
-        enfant.setMethodePayement( methodePayementToMethodePayement( source.getMethodePayement() ) );
         enfant.setCompte( map( source.getCompte() ) );
         enfant.setCours( mapCours( source.getCours() ) );
+        enfant.setCreneau( source.getCreneau() );
+        enfant.setDateDeNaissance( source.getDateDeNaissance() );
+        enfant.setId( source.getId() );
+        enfant.setMethodePayement( methodePayementToMethodePayement( source.getMethodePayement() ) );
+        enfant.setNiveauEtude( source.getNiveauEtude() );
+        enfant.setNom( source.getNom() );
+        enfant.setPrenom( source.getPrenom() );
 
         return enfant;
     }

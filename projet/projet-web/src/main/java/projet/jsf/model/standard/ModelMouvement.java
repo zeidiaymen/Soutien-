@@ -77,17 +77,15 @@ public class ModelMouvement implements Serializable {
 	// Actions
 
 	public String validerMiseAJour() {
+		Compte p = compte.getListe().stream()
+				.filter((a) -> a.getPseudo().equals(compteActif.getIdConnectedUser())).findFirst().get();
+
 		try {
 			if (courant.getId() == null) {
-				Compte p = compte.getListe().stream()
-						.filter((a) -> a.getPseudo().equals(compteActif.getIdConnectedUser())).findFirst().get();
-
 				courant.setCompte(p);
-
 				serviceMouvement.inserer(mapper.mapMouvement(courant));
 			} else {
-
-				courant.setCompte(compteActif);
+				courant.setCompte(p);
 				serviceMouvement.modifier(mapper.mapMouvement(courant));
 			}
 			UtilJsf.messageInfo("Mise à jour effectuée avec succès.");

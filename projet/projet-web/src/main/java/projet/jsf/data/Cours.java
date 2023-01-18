@@ -17,6 +17,19 @@ public class Cours {
 		super();
 	}
 
+<<<<<<< HEAD
+=======
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+>>>>>>> 305e1bc962406953521ad5d8014aa65228c9b9c7
+
 
 	public double getPrix() {
 		return prix;

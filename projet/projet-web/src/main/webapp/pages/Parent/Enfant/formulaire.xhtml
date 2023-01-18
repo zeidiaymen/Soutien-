@@ -3,9 +3,14 @@
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">>
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+                                                           xmlns:rich="http://richfaces.org/rich">
+	<h:outputScript name="js/moment.min.js" />
+	<h:outputScript name="js/bootstrap-datetimepicker.min.js" />
+	<h:outputScript name="js/datepicker-fr.js" />
 
-	 <f:metadata>
+	<f:metadata>
 		<f:viewParam name="id" value="#{modelEnfant.courant.id}" />
 		<f:viewAction action="#{modelEnfant.actualiserCourant()}" />
 	</f:metadata>

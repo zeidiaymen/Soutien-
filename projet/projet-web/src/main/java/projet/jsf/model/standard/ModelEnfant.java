@@ -98,8 +98,13 @@ public class ModelEnfant implements Serializable {
 
 	public String validerAffectation() {
 		try {
+<<<<<<< HEAD
 			serviceCompte.affecterEnfant(Integer.parseInt(temp.toString().substring(11, 12)),
 					model.getCourant().getId(), MethodePayement.valueOf(methode));
+=======
+			System.out.println("id cours " + id);
+			//serviceCompte.affecterEnfant(5, model.getCourant().getId(), MethodePayement.ESPECE);
+>>>>>>> 305e1bc962406953521ad5d8014aa65228c9b9c7
 			return "liste";
 		} catch (Exception e) {
 			UtilJsf.messageError(e);
