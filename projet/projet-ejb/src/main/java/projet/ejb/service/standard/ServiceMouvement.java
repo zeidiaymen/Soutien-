@@ -32,7 +32,7 @@ public class ServiceMouvement implements IServiceMouvement {
 	@Override
 	public int inserer(DtoMouvement DtoMouvement) throws ExceptionValidation {
 
-		int id = daoMouvement.inserer(mapper.mapMouvement(DtoMouvement));
+		int id = daoMouvement.inserer(DtoMouvement.getCompte().getId(), mapper.mapMouvement(DtoMouvement));
 		return id;
 	}
 
@@ -64,4 +64,13 @@ public class ServiceMouvement implements IServiceMouvement {
 		return liste;
 	}
 
+	@Override
+	public List<DtoMouvement> listPerso(int idCompte) {
+		// TODO Auto-generated method stub
+		List<DtoMouvement> liste = new ArrayList<>();
+		for (Mouvement compte : daoMouvement.listPerso(idCompte)) {
+			liste.add(mapper.mapMouvement(compte));
+		}
+		return liste;
+	}
 }

@@ -5,16 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import projet.commun.dto.DtoEnfant;
+import projet.commun.dto.MethodePayement;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceEnfant;
+import projet.jsf.data.Compte;
 import projet.jsf.data.Enfant;
 import projet.jsf.data.mapper.IMapper;
+import projet.jsf.util.CompteActif;
 import projet.jsf.util.UtilJsf;
 
 @SuppressWarnings("serial")
@@ -28,8 +30,10 @@ public class ModelEnfant implements Serializable {
 		this.courant = courant;
 	}
 
+	private Enfant temp;
 	private List<Enfant> liste;
-	private String id ;
+	private String id;
+	private String methode;
 	private Enfant courant;
 
 	@EJB
@@ -40,12 +44,21 @@ public class ModelEnfant implements Serializable {
 
 	@Inject
 	private ModelCours model;
+
+	@Inject
+	private ModelCompte compte;
+	@Inject
+	private CompteActif compteActif ;
 	// Getters
 
 	public List<Enfant> getListe() {
 		if (liste == null) {
 			liste = new ArrayList<>();
-			for (DtoEnfant dto : serviceCompte.listerTout()) {
+			Compte p = compte.getListe().stream()
+					.filter((a) -> a.getPseudo().equals(compteActif.getIdConnectedUser())).findFirst().get();
+			System.out.println("compte sssssssssssssssssssss" + p.getId());
+
+			for (DtoEnfant dto : serviceCompte.listPerso(p.getId())) {
 				liste.add(mapper.mapEnfant(dto));
 			}
 		}
@@ -79,7 +92,9 @@ public class ModelEnfant implements Serializable {
 	public String validerMiseAJour() {
 		try {
 			if (courant.getId() == null) {
-
+				Compte p = compte.getListe().stream()
+						.filter((a) -> a.getPseudo().equals(compteActif.getIdConnectedUser())).findFirst().get();
+				courant.setCompte(p);
 				serviceCompte.inserer(mapper.mapEnfant(courant));
 			} else {
 
@@ -96,8 +111,8 @@ public class ModelEnfant implements Serializable {
 
 	public String validerAffectation() {
 		try {
-			System.out.println("mon id " + id);
-			//serviceCompte.affecterEnfant(5, model.getCourant().getId(), MethodePayement.ESPECE);
+			serviceCompte.affecterEnfant(Integer.parseInt(temp.toString().substring(11, 12)),
+					model.getCourant().getId(), MethodePayement.valueOf(methode));
 			return "liste";
 		} catch (Exception e) {
 			UtilJsf.messageError(e);
@@ -122,5 +137,21 @@ public class ModelEnfant implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public Enfant getTemp() {
+		return temp;
+	}
+
+	public void setTemp(Enfant temp) {
+		this.temp = temp;
+	}
+
+	public String getMethode() {
+		return methode;
+	}
+
+	public void setMethode(String methode) {
+		this.methode = methode;
 	}
 }

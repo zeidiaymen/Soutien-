@@ -8,10 +8,13 @@ import java.util.List;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import projet.ejb.dao.IDaoCompte;
 import projet.ejb.dao.IDaoMouvement;
+import projet.ejb.data.Compte;
 import projet.ejb.data.Mouvement;
 
 @Stateless
@@ -20,13 +23,17 @@ import projet.ejb.data.Mouvement;
 public class DaoMouvement implements IDaoMouvement {
 	@PersistenceContext
 	private EntityManager em;
-
+	@Inject
+	private IDaoCompte dao;
 	// Actions
 
 	@Override
-	public int inserer(Mouvement mouvement) {
+	public int inserer(int idCpt, Mouvement mouvement) {
+		Compte c = dao.retrouver(idCpt);
+		c.setSolde(c.getSolde() - mouvement.getMontant());
 		em.persist(mouvement);
 		em.flush();
+		dao.modifier(c);
 		return mouvement.getId();
 	}
 
@@ -55,4 +62,11 @@ public class DaoMouvement implements IDaoMouvement {
 		return query.getResultList();
 	}
 
+	@Override
+	public List<Mouvement> listPerso(int idCompte) {
+		String jpql = "SELECT c FROM Mouvement c WHERE c.cpt.id = :id";
+		var res = em.createQuery(jpql, Mouvement.class);
+		res.setParameter("id", idCompte);
+		return res.getResultList();
+	}
 }

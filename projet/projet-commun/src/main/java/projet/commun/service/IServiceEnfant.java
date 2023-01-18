@@ -18,5 +18,6 @@ public interface IServiceEnfant {
 
 	List<DtoEnfant> listerTout();
 	boolean affecterEnfant (int idEnfant,int idCours,MethodePayement methode);
+	List<DtoEnfant> listPerso (int idCompte);
 
 }

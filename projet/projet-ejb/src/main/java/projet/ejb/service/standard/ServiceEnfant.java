@@ -73,4 +73,14 @@ public class ServiceEnfant implements IServiceEnfant {
 		return daoCompte.affecterCours(idEnfant, idCours, projet.ejb.data.MethodePayement.valueOf(methode.toString()));
 	}
 
+	@Override
+	public List<DtoEnfant> listPerso(int idCompte) {
+		// TODO Auto-generated method stub
+		List<DtoEnfant> liste = new ArrayList<>();
+		for (Enfant compte : daoCompte.listPerso(idCompte)) {
+			liste.add(mapper.mapEnfant(compte));
+		}
+		return liste ;
+	}
+
 }

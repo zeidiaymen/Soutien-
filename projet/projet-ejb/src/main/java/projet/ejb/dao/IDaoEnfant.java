@@ -18,5 +18,5 @@ public interface IDaoEnfant {
 	List<Enfant> listerTout();
 
 	boolean affecterCours(int idEnfant, int idCours , MethodePayement methode);
-
+	List<Enfant> listPerso(int idCompte);
 }

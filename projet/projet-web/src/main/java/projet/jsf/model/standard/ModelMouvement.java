@@ -9,6 +9,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import projet.commun.dto.DtoEnfant;
 import projet.commun.dto.DtoMouvement;
 import projet.commun.exception.ExceptionValidation;
 import projet.commun.service.IServiceMouvement;
@@ -37,7 +38,7 @@ public class ModelMouvement implements Serializable {
 
 	@Inject
 	private IMapper mapper;
-
+	
 	@Inject
 	private ModelCompte compte;
 	// Getters
@@ -45,7 +46,10 @@ public class ModelMouvement implements Serializable {
 	public List<Mouvement> getListe() {
 		if (liste == null) {
 			liste = new ArrayList<>();
-			for (DtoMouvement dto : serviceMouvement.listerTout()) {
+			Compte p = compte.getListe().stream()
+					.filter((a) -> a.getPseudo().equals(compteActif.getIdConnectedUser())).findFirst().get();
+
+			for (DtoMouvement dto : serviceMouvement.listPerso(p.getId())) {
 				liste.add(mapper.mapMouvement(dto));
 			}
 		}

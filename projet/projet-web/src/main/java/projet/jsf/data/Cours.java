@@ -17,13 +17,6 @@ public class Cours {
 		super();
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public double getPrix() {
 		return prix;
@@ -88,6 +81,16 @@ public class Cours {
 			return false;
 		Cours other = (Cours) obj;
 		return Objects.equals(id, other.id);
+	}
+
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 }
